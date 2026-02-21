@@ -21,6 +21,7 @@ return new class extends Migration
             $table->date('check_out');
             $table->unsignedInteger('adults');
             $table->unsignedInteger('children')->default(0);
+            $table->boolean('wants_ac')->default(false);
             $table->unsignedInteger('total_price');
             $table->enum('status', ['pending', 'confirmed', 'cancelled'])->default('pending');
             $table->text('internal_notes')->nullable();
