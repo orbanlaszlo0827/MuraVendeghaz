@@ -15,8 +15,9 @@ return new class extends Migration
             $table->id();
             $table->string('title');
             $table->unsignedInteger('price_value');
-            $table->string('unit'); // pl. Ft/fő/éj
-            $table->string('category')->nullable(); // pl. 'alap', 'extra'
+            $table->string('unit');
+            $table->string('name');
+            $table->string('category');
             $table->boolean('is_active')->default(true);
             $table->integer('sort_order')->default(0);
             $table->timestamps();
