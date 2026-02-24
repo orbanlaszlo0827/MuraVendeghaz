@@ -12,8 +12,9 @@ class PriceItemController
     {
         $prices = PriceItem::orderBy('sort_order', 'asc')->get();
         $settings = SiteSetting::All();
+        $categories = [];
         
-        return view('admin.edit_prices', compact('prices', 'settings'));
+        return view('admin.edit_prices', compact('prices', 'settings', 'categories'));
     }
 
     public function updateAll(Request $request)
