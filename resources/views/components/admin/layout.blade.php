@@ -39,17 +39,17 @@
               <a class="nav-link text-white-50 hover-white" href="#">
                 <i class="bi bi-calendar-check me-2"></i> Foglalások
               </a>
-              <a class="nav-link text-white-50 hover-white" href="#">
+              <a class="nav-link text-white-50 hover-white {{ request()->routeIs('admin.rooms.index') ? 'active' : '' }}" href="{{ route('admin.rooms.index') }}">
                 <i class="bi bi-houses me-2"></i>Szobák szerkesztése
               </a>
               <a class="nav-link text-white-50 hover-white" href="#">
                 <i class="bi bi-card-image me-2"></i>Galéria kezelő
               </a>
-              <a class="nav-link text-white-50 hover-white {{ request()->routeIs('admin.prices.index') ? 'active' : '' }}" href="#">
+              <a class="nav-link text-white-50 hover-white {{ request()->routeIs('admin.prices.index') ? 'active' : '' }}" href="{{ route('admin.prices.index') }}">
                 <i class="bi bi-cash me-2"></i> Árak és Beállítások
               </a>
               <hr class="my-4">
-              <a class="nav-link text-white-50 hover-white" href="#">
+              <a class="nav-link text-white-50 hover-white">
                 <i class="bi bi-arrow-90deg-left me-2"></i>Vissza a publikus oldalra
               </a>
             </nav>
@@ -67,6 +67,41 @@
         
       </div>
     </div>
+    @if (request()->routeIs('admin.rooms.index'))
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/tinymce/6.8.3/tinymce.min.js" referrerpolicy="origin"></script>
+      <script>
+        tinymce.init({
+            selector: 'textarea.tinymce-editor',
+            plugins: 'lists link wordcount',
+            toolbar: 'undo redo | bold italic | bullist numlist | removeformat',
+            menubar: false,
+            language: 'hu_HU',
+            
+            setup: function (editor) {
+                var maxCharacters = 150;
+
+                editor.on('keydown', function (e) {
+                    var allowedKeys = [8, 46, 37, 38, 39, 40];
+                    if (allowedKeys.indexOf(e.keyCode) !== -1) {
+                        return;
+                    }
+
+                    var currentCount = editor.getContent({format: 'text'}).length;
+
+                    if (currentCount >= maxCharacters) {
+                        e.preventDefault();
+                        e.stopPropagation();
+                        return false;
+                    }
+                });
+
+                editor.on('change', function () {
+                    editor.save(); 
+                });
+            }
+        });
+    </script>
+    @endif
 </body>
 
 </html>
