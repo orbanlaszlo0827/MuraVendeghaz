@@ -60,6 +60,6 @@
             @endforeach
         </div>
 
-        <button type="submit" class="btn btn-warning mt-3">Beállítások mentése</button>
+        <button type="submit" class="btn btn-success mt-3">Beállítások mentése</button>
     </form>
 </x-admin.layout>

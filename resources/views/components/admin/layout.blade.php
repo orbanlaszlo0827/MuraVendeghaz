@@ -55,9 +55,15 @@
             </nav>
           </div>
         </div>
-          <div class="col-12 col-xl-7 offset-xl-1 col-lg-9 py-3">
-              {{ $slot }}
+        <div class="col-12 col-xl-7 offset-xl-1 col-lg-9 py-3">
+          @if (session('success'))
+          <div class="alert alert-success alert-dismissible fade show m-3" role="alert">
+            {{ session('success') }}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
           </div>
+          @endif
+          {{ $slot }}
+        </div>
         
       </div>
     </div>
