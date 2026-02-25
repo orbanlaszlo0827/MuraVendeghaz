@@ -23,10 +23,25 @@ class RoomContentController
             'rooms' => 'required|array',
             'rooms.*.title' => 'required|string',
             'rooms.*.description' => 'required|string',
+            'rooms.*.image' => 'nullable|image|mimes:jpeg,png,jpg,webp|max:4096'
         ]);
 
         foreach ($request->rooms as $id => $data) {
             $roomContent = RoomContent::find($id);
+
+            if ($roomContent -> image_path && $request->hasFile("rooms.{$id}.image")) {
+                // Régi kép törlése
+                $oldImagePath = public_path('storage/' . $roomContent->image_path);
+                if (file_exists($oldImagePath)) {
+                    unlink($oldImagePath);
+                }
+            }
+
+            if ($request->hasFile("rooms.{$id}.image")) {
+                $imagePath = $request->file("rooms.{$id}.image")->store('room_images', 'public');
+                $roomContent->update(['image_path' => $imagePath]);
+            }
+
             if ($roomContent) {
                 $roomContent->update([
                     'title' => $data['title'],
