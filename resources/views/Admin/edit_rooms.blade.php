@@ -1,11 +1,12 @@
 <x-admin.layout>
+    @section('title', 'Szobák Szerkesztése')
     <form action="{{ route('admin.rooms.updateAll') }}" method="POST" enctype="multipart/form-data">
         @csrf
         @method('PUT') 
         <div class="row">
             <h1>Szobák szerkesztése</h1>
             @foreach($rooms as $room)
-                <div class="col-12 col-lg-6 mb-4">
+                <div class="col-12 col-lg-6 mb-4 mt-2">
                     <div class="card w-100 h-100">
                         <div class="card-body">
                                 <input type="text" class="form-control mb-2 bg-white fw-medium"

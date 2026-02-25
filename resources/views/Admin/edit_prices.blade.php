@@ -1,4 +1,6 @@
 <x-admin.layout>
+    @section('title', 'Árak Szerkesztése')
+
     <form action="{{ route('admin.prices.updateAll') }}" method="POST">
         @csrf
         @method('PUT') 
@@ -10,7 +12,7 @@
                 
                 @endif
                 <div class="col-lg-4 col-sm-6 mb-3">
-                    <div class="card p-3">
+                    <div class="card p-3 bg-white">
                         <div class="card-title fw-medium">{{ $price->title }}</div>
                         
                         <div class="input-group">
@@ -38,7 +40,7 @@
         <div class="row">
             @foreach($settings as $setting)
                 <div class="col-md-6 mb-3">
-                    <div class="card p-3 h-100">
+                    <div class="card p-3 h-100 bg-white">
                         <div class="card-title fw-medium border-0 pb-2">{{ $setting->description }}</div>
                         
                         <div class="card-body p-0">
