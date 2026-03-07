@@ -10,7 +10,6 @@ class UserSeeder extends Seeder
 {
     public function run(): void
     {
-        // Ha többször futtatod, ne csináljon duplikációt
         User::firstOrCreate(
             ['email' => 'admin@muravendeghaz.hu'],
             [

@@ -35,7 +35,7 @@
             </h3>
 
             <nav class="nav flex-column gap-2">
-              <a class="nav-link text-white-50 hover-white" href="#">
+              <a class="nav-link text-white-50 hover-white {{ request()->routeIs('admin.dashboard') ? 'active' : '' }}" href="{{ route('admin.dashboard') }}">
                 <i class="bi bi-speedometer2 me-2"></i> Vezérlőpult
               </a>
               <a class="nav-link text-white-50 hover-white" href="#">
@@ -54,13 +54,16 @@
                 <i class="bi bi-cash me-2"></i> Árak és Beállítások
               </a>
               <hr class="my-4">
-              <a class="nav-link text-white-50 hover-white">
-                <i class="bi bi-arrow-90deg-left me-2"></i>Vissza a publikus oldalra
-              </a>
+              <form action="{{ route('logout') }}" method="POST">
+                @csrf
+                <button class="nav-link text-white-50 hover-white w-100 text-start" type="submit">
+                  <i class="bi bi-arrow-90deg-left me-2"></i>Vissza a publikus oldalra
+                </button>
+              </form>
             </nav>
           </div>
         </div>
-        <div class="col-12 col-xl-7 offset-xl-1 col-lg-9 py-3">
+        <main class="col-12 col-xl-7 offset-xl-1 col-lg-9 py-3">
           @if (session('success'))
           <div class="alert alert-success alert-dismissible fade show m-3" role="alert">
             {{ session('success') }}
@@ -68,7 +71,7 @@
           </div>
           @endif
           {{ $slot }}
-        </div>
+        </main>
         
       </div>
     </div>
