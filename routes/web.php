@@ -11,7 +11,7 @@ use Illuminate\Support\Facades\Session;
 
 Route::get('/', function () {
     return view('frontend.welcome');
-});
+})->name('home');
 
 Route::get('/admin', function () {
     return view('auth.login');

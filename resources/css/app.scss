@@ -5,10 +5,10 @@ $mura-poppy: #CE362C;
 $mura-blue: #A9BCCD;
 $mura-sand: #E8D8C8;
 $mura-light: #F9F6F0;
-$mura-dark: #3E2723;
+$mura-dark: #cf7500;
 
 $primary: $mura-terracotta;
-$secondary: $mura-green;
+$secondary: $mura-sand;
 $success: #448A47;
 $info: $mura-blue;
 $warning: #F4A261;
@@ -17,12 +17,14 @@ $light: $mura-light;
 $dark: $mura-dark;
 
 $body-bg:         $light;
-$body-color:      $dark;
 
-$link-color:      $mura-terracotta;
+//$link-color:      $mura-terracotta;
 $link-hover-color: darken($mura-terracotta, 10%);
 
-$border-color:    $mura-sand;
+//$border-color:    $mura-sand;
+
+$font-family-sans-serif: 'Montserrat', sans-serif;
+$headings-font-family: 'Lora', serif;
 
 // Spacing
 $spacer: 1rem;
@@ -40,6 +42,8 @@ $spacers: (
   8: $spacer * 12
 );
 
+$font-size-base: 1rem;
+
 @import 'bootstrap-icons/font/bootstrap-icons.css';
 @import 'bootstrap/scss/bootstrap';
 
@@ -50,5 +54,30 @@ $spacers: (
         color: #ffffff !important;
         background-color: rgba(255, 255, 255, 0.1);
         border-radius: 0.375rem;
+    }
+}
+
+.nav-link {
+    color: black;
+    font-size: 1.1rem;
+    font-weight: 500;
+    letter-spacing: 1px;
+    transition: color 0.3s ease-in-out;
+    
+    &:hover {
+        text-decoration: underline;
+
+    }
+}
+
+.btn-foglalas {
+    letter-spacing: 1px;
+    font-size: 1rem;
+}
+
+.footer-links {
+    a {
+        color: black;
+        text-decoration: none;
     }
 }
