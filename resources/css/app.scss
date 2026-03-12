@@ -5,7 +5,7 @@ $mura-poppy: #CE362C;
 $mura-blue: #A9BCCD;
 $mura-sand: #E8D8C8;
 $mura-light: #F9F6F0;
-$mura-dark: #cf7500;
+$mura-dark: #555555;
 
 $primary: $mura-terracotta;
 $secondary: $mura-sand;
@@ -80,4 +80,44 @@ $font-size-base: 1rem;
         color: black;
         text-decoration: none;
     }
+}
+
+.parallax-window {
+    background-image: var(--bg-image);
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 480px;
+}
+
+.hero-image {
+    height: 860px;
+    object-fit: cover;
+    object-position: center;
+}
+
+.logo-image {
+    max-height: 60px;
+    width: auto
+}
+
+.zigzag-image {
+    object-fit: cover;
+    height: 100%;
+}
+
+.review-subtitle {
+    letter-spacing: 1.5px;
+    font-size: 0.85rem;
+}
+
+@for $i from 1 through 10 {
+    .ls-#{$i} {
+        letter-spacing: #{$i}px !important;
+    }
+}
+
+.lh-17 {
+    line-height: 1.7;
 }
