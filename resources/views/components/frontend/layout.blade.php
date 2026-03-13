@@ -124,12 +124,13 @@
             </div>
 
             <div class="row mx-0 bg-primary align-items-center justify-content-center justify-content-md-between">
-                <div class="col-12 col-md-6 d-flex flex-column flex-md-row justify-content-center justify-content-md-start gap-2 gap-md-4 py-2">
+                <div class="col-12 col-md-6 d-flex flex-column flex-md-row justify-content-center justify-content-md-end gap-2 gap-md-4 py-2 order-1 order-md-2">
                     <a class="link-light link-offset-2 link-underline-opacity-25 link-underline-opacity-75-hover text-center" href="#">ÁSZF</a>
                     <a class="link-light link-offset-2 link-underline-opacity-25 link-underline-opacity-75-hover text-center" href="#">Impresszum</a>
                     <a class="link-light link-offset-2 link-underline-opacity-25 link-underline-opacity-75-hover text-center" href="#">Házirend</a>
+                    <p class="link-light text-center" href="#"><b>NTAK: </b>MA-19006725</p>
                 </div>
-                <div class="col-12 col-md-6 text-white text-center text-md-end py-2">
+                <div class="col-12 col-md-6 text-white text-center text-md-start py-2 order-2 order-md-1">
                     <p class="mb-0">&copy; {{ date('Y') }} Mura Vendégház. Minden jog fenntartva.</p>
                 </div>
             </div>
