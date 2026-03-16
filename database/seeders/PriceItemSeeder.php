@@ -11,9 +11,9 @@ class PriceItemSeeder extends Seeder
     {
         $prices = [
             ['title' => '1 fő', 'price_value' => 15000, 'unit' => 'Ft/éj', 'name' => '1_felnott','category' => 'Felnőtt árak', 'sort_order' => 1],
-            ['title' => '2-3 fő', 'price_value' => 12000, 'unit' => 'Ft/fő/éj', 'name' => '2_3felnott', 'category' => 'Felnőtt árak', 'sort_order' => 2],
-            ['title' => '4-5 fő', 'price_value' => 10000, 'unit' => 'Ft/fő/éj', 'name' => '4_5felnott', 'category' => 'Felnőtt árak', 'sort_order' => 3],
-            ['title' => '6-7 fő', 'price_value' => 9000, 'unit' => 'Ft/fő/éj', 'name' => '6_7felnott', 'category' => 'Felnőtt árak', 'sort_order' => 4],
+            ['title' => '2-3 fő', 'price_value' => 12000, 'unit' => 'Ft/fő/éj', 'name' => '2_felnott', 'category' => 'Felnőtt árak', 'sort_order' => 2],
+            ['title' => '4-5 fő', 'price_value' => 10000, 'unit' => 'Ft/fő/éj', 'name' => '4_felnott', 'category' => 'Felnőtt árak', 'sort_order' => 3],
+            ['title' => '6-7 fő', 'price_value' => 9000, 'unit' => 'Ft/fő/éj', 'name' => '6_felnott', 'category' => 'Felnőtt árak', 'sort_order' => 4],
             ['title' => '8+ fő', 'price_value' => 8000, 'unit' => 'Ft/fő/éj', 'name' => '8_felnott', 	'category' =>	"Felnőtt árak",	'sort_order'=>5],
 
             ['title' => 'Gyermek ár (10 éves kor alatt)', 'price_value' => 6000, 'unit' => 'Ft/fő/éj', 'name' => 'gyermek', 'category' => 'Egyéb', 'sort_order' => 6],
@@ -23,11 +23,11 @@ class PriceItemSeeder extends Seeder
             ['title' => 'Rugalmas érkezés', 'price_value' => 1000, 'unit' => 'Fő/óra', 'name' => 'rugalmas_erkezes', 	'category'=>'Egyéb','sort_order'=>10],
             ['title' => 'Szauna használat', 'price_value' => 3000, 'unit' => 'Ft/óra',	'name'=>'szauna','category'=>'Egyéb','sort_order'=>11],
             ['title' => 'Fazekas bemutató', 'price_value' => 15000, 'unit' => 'Ft/óra', 'name' => 'fazekas', 'category' => 'Egyéb', 'sort_order' => 12],
-            ['title' => 'Sátrazás', 'price_value' => 6000, 'unit' => 'Ft/fő/éj', 'name' => 'sátor', 'category' => 'Egyéb', 'sort_order' => 13],
+            ['title' => 'Sátrazás', 'price_value' => 6000, 'unit' => 'Ft/fő/éj', 'name' => 'sator', 'category' => 'Egyéb', 'sort_order' => 13],
 
             ['title' => '1 éjszaka', 'price_value' => 7000, 'unit' => 'Ft', 'name' => '1ej_futes', 'category' => 'Fűtési felár', 'sort_order' => 14],
             ['title' => '2 éjszaka', 'price_value' => 5000, 'unit' => 'Ft/éj', 'name' => '2ej_futes', 'category' => 'Fűtési felár', 'sort_order' => 15],
-            ['title' => '3+ éjszaka', 'price_value' => 3000, 'unit' => 'Ft/éj',	'name'=>'3+ej_futes','category'=>'Fűtési felár','sort_order'=>16],
+            ['title' => '3+ éjszaka', 'price_value' => 3000, 'unit' => 'Ft/éj',	'name'=>'3ej_futes','category'=>'Fűtési felár','sort_order'=>16],
 
         ];
 

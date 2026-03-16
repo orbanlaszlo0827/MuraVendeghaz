@@ -5,6 +5,7 @@ use App\Http\Controllers\Admin\PriceItemController;
 use App\Http\Controllers\Admin\RoomContentController;
 use App\Http\Controllers\Admin\SiteSettingController;
 use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\Frontend\BookingController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Session;
@@ -12,6 +13,9 @@ use Illuminate\Support\Facades\Session;
 Route::get('/', function () {
     return view('frontend.welcome');
 })->name('home');
+
+Route::get('/foglalas', [BookingController::class, 'index'])->name('booking');
+Route::post('/kalkulacio', [BookingController::class, 'calculatePrice'])->name('booking.calculate');
 
 Route::get('/admin', function () {
     return view('auth.login');

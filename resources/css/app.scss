@@ -63,10 +63,11 @@ $font-size-base: 1rem;
     font-weight: 500;
     letter-spacing: 1px;
     transition: color 0.3s ease-in-out;
-    
-    &:hover {
-        text-decoration: underline;
+}
 
+.frontend-nav-ha {
+    &:hover, &:active {
+        text-decoration: underline;
     }
 }
 
@@ -97,6 +98,12 @@ $font-size-base: 1rem;
     object-position: center;
 }
 
+.booking-hero-image {
+    height: 560px;
+    object-fit: cover;
+    object-position: center;
+}
+
 .logo-image {
     max-height: 60px;
     width: auto
@@ -120,4 +127,8 @@ $font-size-base: 1rem;
 
 .lh-17 {
     line-height: 1.7;
+}
+
+.sticky-prices {
+    top: 2rem;
 }

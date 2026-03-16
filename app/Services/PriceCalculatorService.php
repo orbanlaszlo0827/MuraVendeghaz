@@ -3,59 +3,53 @@
 namespace App\Services;
 
 use App\Models\PriceItem;
-use App\Models\SiteSetting;
 use Carbon\Carbon;
 
 class PriceCalculatorService
 {
-    private $adultPricesPerNights = [
-    1 => 15000,  // 1 person/night
-    2 => 12000,  // 2-3 people/night
-    3 => 12000,
-    4 => 10000,  // 4-5 people/night
-    5 => 10000,
-    6 => 9000,   // 6-7 people/night
-    7 => 9000,
-    8 => 8000,   // 8+ people/night
-    ];
+    public function calculatePrice($comingDate, $leavingDate, $numAdults, $numChildren, $isHeatingNeeded, $isClimateNeeded) 
+    {
+        $checkIn = Carbon::parse($comingDate);
+        $checkOut = Carbon::parse($leavingDate);
+        $nightsSum = $checkIn->diffInDays($checkOut);
 
-    private $heatingPricesPerNights = [
-        1 => 7000,   // 1 night heating
-        2 => 5000,   // 2 nights heating
-        3 => 3000,   // 3 nights heating
-    ];
-
-    private $childPricePerNights = 6000;  // 1 child/night
-    private $climatePricePerDays = 2000;  // 1 day climate control
-
-
-    public function calculatePrice($comingDate, $leavingDate, $numAdults, $numChildren, $isHeatingNeeded, $isClimateNeeded) {
-
-    global $adultPricesPerNights, $heatingPricesPerNights, $childPricePerNights, $climatePricePerDays;
-
-    $comingParts = explode("-", $comingDate);
-    $leavingParts = explode("-", $leavingDate);
-    $nightsSum = (int)$leavingParts[2] - (int)$comingParts[2];
-
-    $totalPrice = $adultPricesPerNights[$numAdults] * $nightsSum * $numAdults + $childPricePerNights * $numChildren * $nightsSum;
-
-    if ($isHeatingNeeded) {
-        if ($nightsSum < 3) {
-            $totalPrice += $this->heatingPricesPerNights[$nightsSum] * $nightsSum;
-        } else {
-            $totalPrice += $this->heatingPricesPerNights[3] * $nightsSum;
+        $adultKey = $numAdults > 8 ? 8 : $numAdults;
+        
+        if ($nightsSum <= 0 || $adultKey <= 0) {
+            return 0;
         }
+
+        if ($adultKey % 2 != 0) {
+            $adultKey -= 1;
+        }
+        
+        $adultPriceItem = PriceItem::where('name', $adultKey . '_felnott')->first();
+        $adultPrice = $adultPriceItem ? $adultPriceItem->price : 15000;
+
+        $childPriceItem = PriceItem::where('name', 'gyermek')->first();
+        $childPrice = $childPriceItem ? $childPriceItem->price : 6000;
+
+        $totalPrice = ($adultPrice * $nightsSum * $numAdults) + ($childPrice * $numChildren * $nightsSum);
+
+        if ($isHeatingNeeded) {
+            $heatingKey = $nightsSum < 3 ? $nightsSum : 3;
+            $heatingPriceItem = PriceItem::where('name', $heatingKey . 'ej_futes')->first();
+            $heatingPrice = $heatingPriceItem ? $heatingPriceItem->price : 7000;
+            
+            $totalPrice += ($heatingPrice * $nightsSum);
+        }
+
+        if ($isClimateNeeded) {
+            $climatePriceItem = PriceItem::where('name', 'klima')->first();
+            $climatePrice = $climatePriceItem ? $climatePriceItem->price : 2000;
+            
+            $totalPrice += ($climatePrice * $nightsSum);
+        }
+
+        if ($nightsSum == 1) {
+            $totalPrice *= 1.25; 
+        }
+
+        return round($totalPrice);
     }
-
-    if ($isClimateNeeded) {
-        $totalPrice += $this->climatePricePerDays * $nightsSum;
-    }
-
-    if ($nightsSum == 1) {
-        $totalPrice *= 1.25;
-    }
-
-    return $totalPrice;
-}
-
 }
