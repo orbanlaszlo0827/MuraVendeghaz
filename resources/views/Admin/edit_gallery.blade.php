@@ -1,4 +1,8 @@
 <x-admin.layout>
+    @push('styles')
+      <link rel="stylesheet" href="https://unpkg.com/dropzone@5/dist/min/dropzone.min.css" type="text/css" />
+    @endpush
+
     @section('title', 'Galéria Szerkesztése')
     
     <form action="{{ route('admin.gallery.store') }}" class="dropzone" id="myDropzone">
@@ -31,4 +35,56 @@
             @endforeach
         </div>
     </div>
+
+    @push('scripts')
+        <script src="https://unpkg.com/dropzone@5/dist/min/dropzone.min.js"></script>
+        <script>
+            Dropzone.options.myDropzone = {
+                paramName: "image",
+                maxFilesize: 4,
+                acceptedFiles: ".jpeg,.jpg,.png,.webp",
+                dictDefaultMessage: "Húzd ide a képeket, vagy kattints a feltöltéshez!",
+                success: function (file, response) {
+                    console.log("Sikeres feltöltés:", response);
+                },
+                queuecomplete: function() {
+                    setTimeout(function() { location.reload(); }, 1000); 
+                }
+            };
+
+            document.querySelectorAll('.category-select').forEach(function(select) {
+                select.addEventListener('change', function() {
+                    let imageId = this.getAttribute('data-id');
+                    let newCategory = this.value;
+
+                    fetch(`/admin/galeria/${imageId}/kategoria`, {
+                        method: 'PATCH',
+                        headers: {
+                            'Content-Type': 'application/json',
+                            'X-CSRF-TOKEN': '{{ csrf_token() }}'
+                        },
+                        body: JSON.stringify({ category: newCategory })
+                    })
+                    .then(response => response.json())
+                    .then(data => {
+                        if(data.success) {
+                            select.style.backgroundColor = '#d1e7dd'; 
+                            select.style.borderColor = '#badbcc';
+                            select.style.color = '#0f5132';
+
+                            setTimeout(() => {
+                                select.style.backgroundColor = '';
+                                select.style.borderColor = '';
+                                select.style.color = '';
+                            }, 1500);
+                        }
+                    })
+                    .catch(error => {
+                        select.style.backgroundColor = '#f8d7da';
+                        alert('Hiba történt a mentés során!');
+                    });
+                });
+            });
+        </script>
+    @endpush
 </x-admin.layout>

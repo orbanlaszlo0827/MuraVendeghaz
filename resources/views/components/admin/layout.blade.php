@@ -4,12 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@yield('title', 'Vezérlőpult') | Mura Vendégház</title>
-
-    @if (request()->routeIs('admin.gallery.index'))
-      <link rel="stylesheet" href="https://unpkg.com/dropzone@5/dist/min/dropzone.min.css" type="text/css" />
-    @endif
-
     @vite(['resources/css/app.scss', 'resources/js/app.js'])
+    @stack('styles')
 </head>
 <body>
     <div class="container-fluid">
@@ -63,6 +59,7 @@
             </nav>
           </div>
         </div>
+        
         <main class="col-12 col-xl-7 offset-xl-1 col-lg-9 py-3">
           @if (session('success'))
           <div class="alert alert-success alert-dismissible fade show m-3" role="alert">
@@ -75,93 +72,9 @@
         
       </div>
     </div>
-    @if (request()->routeIs('admin.rooms.index'))
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/tinymce/6.8.3/tinymce.min.js" referrerpolicy="origin"></script>
-      <script>
-        tinymce.init({
-            selector: 'textarea.tinymce-editor',
-            plugins: 'lists link wordcount',
-            toolbar: 'undo redo | bold italic | bullist numlist | removeformat',
-            menubar: false,
-            language: 'hu_HU',
-            
-            setup: function (editor) {
-                var maxCharacters = 150;
 
-                editor.on('keydown', function (e) {
-                    var allowedKeys = [8, 46, 37, 38, 39, 40];
-                    if (allowedKeys.indexOf(e.keyCode) !== -1) {
-                        return;
-                    }
+  @stack('scripts')
 
-                    var currentCount = editor.getContent({format: 'text'}).length;
-
-                    if (currentCount >= maxCharacters) {
-                        e.preventDefault();
-                        e.stopPropagation();
-                        return false;
-                    }
-                });
-
-                editor.on('change', function () {
-                    editor.save(); 
-                });
-            }
-        });
-    </script>
-    @endif
-
-    @if (request()->routeIs('admin.gallery.index'))
-      <script src="https://unpkg.com/dropzone@5/dist/min/dropzone.min.js"></script>
-      <script>
-        Dropzone.options.myDropzone = {
-            paramName: "image",
-            maxFilesize: 4,
-            acceptedFiles: ".jpeg,.jpg,.png,.webp",
-            dictDefaultMessage: "Húzd ide a képeket, vagy kattints a feltöltéshez!",
-            success: function (file, response) {
-                console.log("Sikeres feltöltés:", response);
-            },
-            queuecomplete: function() {
-                setTimeout(function() { location.reload(); }, 1000); 
-            }
-        };
-
-        document.querySelectorAll('.category-select').forEach(function(select) {
-            select.addEventListener('change', function() {
-                let imageId = this.getAttribute('data-id');
-                let newCategory = this.value;
-
-                fetch(`/admin/galeria/${imageId}/kategoria`, {
-                    method: 'PATCH',
-                    headers: {
-                        'Content-Type': 'application/json',
-                        'X-CSRF-TOKEN': '{{ csrf_token() }}'
-                    },
-                    body: JSON.stringify({ category: newCategory })
-                })
-                .then(response => response.json())
-                .then(data => {
-                    if(data.success) {
-                        select.style.backgroundColor = '#d1e7dd'; 
-                        select.style.borderColor = '#badbcc';
-                        select.style.color = '#0f5132';
-
-                        setTimeout(() => {
-                            select.style.backgroundColor = '';
-                            select.style.borderColor = '';
-                            select.style.color = '';
-                        }, 1500);
-                    }
-                })
-                .catch(error => {
-                    select.style.backgroundColor = '#f8d7da';
-                    alert('Hiba történt a mentés során!');
-                });
-            });
-        });
-    </script>
-    @endif
 </body>
 
 </html>
