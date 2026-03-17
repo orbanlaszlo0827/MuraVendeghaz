@@ -161,8 +161,9 @@
                                 <span class="fw-bold fs-2 text-primary"><span id="summary-total-price">0</span> Ft</span>
                             </div>
 
-                            <button type="submit" id="submit-booking-btn" class="btn btn-success w-100 fw-bold fs-2 mt-3" disabled>
-                                Foglalás véglegesítése
+                            <button type="submit" id="submit-booking-btn" class="btn btn-success w-100 fw-bold fs-2 mt-3 d-flex justify-content-center align-items-center gap-2" disabled>
+                                <span id="btn-text">Foglalás véglegesítése</span>
+                                <span id="btn-spinner" class="spinner-border spinner-border-sm d-none" role="status" aria-hidden="true"></span>
                             </button>
                         </div>
                     </div>
@@ -181,6 +182,8 @@
                 const form = document.querySelector('form');
                 const csrfToken = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
                 const submitBtn = document.getElementById('submit-booking-btn');
+                const btnText = document.getElementById('btn-text');       // ÚJ
+                const btnSpinner = document.getElementById('btn-spinner'); // ÚJ
                 const protectionCheck = document.getElementById('protectionCheck');
 
                 const adultInput = document.querySelector('input[name="adults"]');
@@ -339,6 +342,11 @@
                         wants_ac: wantsAc
                     };
 
+                    if (btnText && btnSpinner) {
+                        btnText.textContent = 'Árkalkuláció...';
+                        btnSpinner.classList.remove('d-none');
+                    }
+
                     fetch('/kalkulacio', {
                         method: 'POST',
                         headers: {
@@ -386,6 +394,22 @@
                             }
 
                             checkSubmitConditions();
+                        } else {
+                            console.error("Laravel Hiba:", data.error, "Sor:", data.line);
+                            alert("Backend hiba történt! Nézd meg az F12 Console-t!\nHiba: " + data.error);
+                        }
+
+                        if (btnText && btnSpinner) {
+                            btnText.textContent = 'Foglalás véglegesítése';
+                            btnSpinner.classList.add('d-none');
+                        }
+                    })
+                    .catch(error => {
+                        console.error('Hiba az árszámítás során:', error);
+                        
+                        if (btnText && btnSpinner) {
+                            btnText.textContent = 'Foglalás véglegesítése';
+                            btnSpinner.classList.add('d-none');
                         }
                     });
                 }
