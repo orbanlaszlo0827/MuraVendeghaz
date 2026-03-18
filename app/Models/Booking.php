@@ -14,6 +14,7 @@ protected $fillable = [
         'check_out',
         'adults',
         'children',
+        'wants_heating',
         'wants_ac',
         'total_price',
         'status',

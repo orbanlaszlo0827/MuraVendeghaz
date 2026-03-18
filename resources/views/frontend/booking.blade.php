@@ -18,6 +18,10 @@
 
     <form action="" method="POST">
         @csrf
+
+        <input type="hidden" name="check_in" id="hidden_check_in">
+        <input type="hidden" name="check_out" id="hidden_check_out">
+
         <div class="container py-5">
             <div class="row">
                 <div class="col-12 col-xl-8 mb-3 mb-xl-0">
@@ -107,7 +111,7 @@
                             </div>
 
                             <div class="form-check">
-                                <input class="form-check-input" type="checkbox" value="" id="protectionCheck">
+                                <input class="form-check-input" type="checkbox" value="1" id="protectionCheck" name="terms">
                                 <label class="form-check-label">
                                     Kijelentem, hogy elolvastam és elfogadom az Adatkezelési Tájékoztatót és a Házirendet.
                                 </label>
@@ -227,6 +231,9 @@
                         if (selectedDates.length === 2) {
                             checkInDate = formatDateForBackend(selectedDates[0]);
                             checkOutDate = formatDateForBackend(selectedDates[1]);
+
+                            document.getElementById('hidden_check_in').value = checkInDate;
+                            document.getElementById('hidden_check_out').value = checkOutDate;
                             
                             elStartDate.textContent = selectedDates[0].toLocaleDateString('hu-HU');
                             elEndDate.textContent = selectedDates[1].toLocaleDateString('hu-HU');
