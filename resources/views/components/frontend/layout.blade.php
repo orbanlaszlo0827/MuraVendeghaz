@@ -51,7 +51,7 @@
                         </li>
                         
                         <li class="nav-item mt-2 mt-lg-0">
-                            <a href="{{ route('booking') }}" class="btn btn-primary py-1 px-3 rounded-pill btn-foglalas">Foglalás</a>
+                            <a href="{{ route('booking.index') }}" class="btn btn-primary py-1 px-3 rounded-pill btn-foglalas">Foglalás</a>
                         </li>
                     </ul>
                     

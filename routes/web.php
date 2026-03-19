@@ -14,10 +14,13 @@ Route::get('/', function () {
     return view('frontend.welcome');
 })->name('home');
 
-Route::get('/foglalas', [BookingController::class, 'index'])->name('booking');
+Route::get('/foglalas', [BookingController::class, 'index'])->name('booking.index');
 Route::post('/kalkulacio', [BookingController::class, 'calculatePrice'])->name('booking.calculate');
 Route::post('/foglalas/mentes', [BookingController::class, 'store'])->name('booking.store');
 Route::get('/foglalas/sikeres', function () {
+    if (!session()->has('success')) {
+        return redirect()->route('booking.index');
+    }
     return view('frontend.successful_booking');
 })->name('booking.success');
 

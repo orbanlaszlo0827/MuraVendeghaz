@@ -254,7 +254,7 @@
                 flatpickr("#dateRange", {
                     mode: "range",
                     locale: "hu",
-                    minDate: "today",
+                    minDate: new Date().fp_incr(3),
                     dateFormat: "Y. M. d.",
                     showMonths: window.innerWidth > 768 ? 2 : 1,
                     disable: parsedDisabledDates,

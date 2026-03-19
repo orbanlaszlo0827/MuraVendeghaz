@@ -39,7 +39,7 @@ class BookingController
      function calculatePrice(Request $request, PriceCalculatorService $calculator)
     {
         $request->validate([
-            'check_in' => 'required|date',
+            'check_in' => 'required|date|after_or_equal:' . now()->addDays(3)->toDateString(),
             'check_out' => 'required|date|after:check_in',
             'adults' => 'required|integer|min:1',
             'children' => 'required|integer|min:0',
@@ -74,7 +74,7 @@ class BookingController
     public function store(Request $request, PriceCalculatorService $calculator)
     {
         $request->validate([
-            'check_in'  => 'required|date|after_or_equal:today',
+            'check_in'  => 'required|date|after_or_equal:' . now()->addDays(3)->toDateString(),
             'check_out' => 'required|date|after:check_in',
             'adults'    => 'required|integer|min:1',
             'children'  => 'required|integer|min:0',
@@ -100,7 +100,7 @@ class BookingController
 
         DB::transaction(function () use ($request, $priceResult) {
             
-            $guest = Guest::firstOrCreate(
+            $guest = Guest::updateOrCreate(
                 ['email' => $request->email],
                 [
                     'name' => $request->name,
