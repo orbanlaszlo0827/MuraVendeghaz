@@ -16,7 +16,7 @@
         </div>
     </div>
 
-    <form action="" method="POST">
+    <form action="{{ route('booking.store') }}" method="POST">
         @csrf
 
         <input type="hidden" name="check_in" id="hidden_check_in">
@@ -69,7 +69,7 @@
                                         <div class="d-flex justify-content-between align-items-center mb-4">
                                             <div>
                                                 <label class="form-label mb-1 fs-4">Légkondicionálás</label>
-                                                <p class="text-muted mb-0 fs-5">Hűtés és komfort (+2.000 Ft/nap)</p>
+                                                <p class="text-muted mb-0 fs-6">Hűtés és komfort (+2.000 Ft/nap). <br><em>A teljes időtartamra számolva. Ha csak bizonyos napokra kéri, a megjegyzésben jelezheti!</em></p>
                                             </div>
                                             
                                             <div class="form-check form-switch fs-3 mb-0">
@@ -80,6 +80,15 @@
                                 </div>
                             </div>
                         </div>
+                    </div>
+
+                    <div class="bg-light rounded-3 border mb-4 p-4 border-primary">
+                        <h3 class="mb-3 text-primary"><i class="bi bi-primary-circle me-2"></i>Helyszínen igényelhető extrák</h3>
+                        <ul class="mb-0 text-muted fs-5">
+                            <li><strong>Szauna használat:</strong> 5.000 Ft / alkalom (Érkezéskor egyeztethető)</li>
+                            <li><strong>Dézsa fürdő:</strong> 12.000 Ft / nap (Felfűtés miatt előre jelzést kérünk a megjegyzésben!)</li>
+                            <li><strong>Kerékpárbérlés:</strong> 3.000 Ft / nap</li>
+                        </ul>
                     </div>
 
                     <div class="bg-white rounded-3 border">
@@ -161,9 +170,12 @@
                             <hr>
                             
                             <div class="d-flex justify-content-between align-items-center mb-2">
-                                <span class="text-muted fs-4">Végösszeg</span>
+                                <span class="text-muted fs-4">Várható végösszeg</span>
                                 <span class="fw-bold fs-2 text-primary"><span id="summary-total-price">0</span> Ft</span>
                             </div>
+                            <p class="text-muted fs-6 mb-3" style="font-size: 0.85rem;">
+                                * A végleges fizetendő összeg a helyszínen kért extra szolgáltatások függvényében változhat. A foglalás elküldése még nem jár fizetési kötelezettséggel!
+                            </p>
 
                             <button type="submit" id="submit-booking-btn" class="btn btn-success w-100 fw-bold fs-2 mt-3 d-flex justify-content-center align-items-center gap-2" disabled>
                                 <span id="btn-text">Foglalás véglegesítése</span>
@@ -186,8 +198,8 @@
                 const form = document.querySelector('form');
                 const csrfToken = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
                 const submitBtn = document.getElementById('submit-booking-btn');
-                const btnText = document.getElementById('btn-text');       // ÚJ
-                const btnSpinner = document.getElementById('btn-spinner'); // ÚJ
+                const btnText = document.getElementById('btn-text');
+                const btnSpinner = document.getElementById('btn-spinner');
                 const protectionCheck = document.getElementById('protectionCheck');
 
                 const adultInput = document.querySelector('input[name="adults"]');
@@ -220,6 +232,8 @@
                 let currentNights = 0;
                 
                 let debounceTimer; 
+                let fetchCounter = 0;
+                let isTimerRunning = false;
 
                 flatpickr("#dateRange", {
                     mode: "range",
@@ -318,27 +332,46 @@
                     submitBtn.disabled = true;
                 }
 
+                function showLoading() {
+                    if (btnText && btnSpinner) {
+                        btnText.textContent = 'Árkalkuláció...';
+                        btnSpinner.classList.remove('d-none');
+                        submitBtn.disabled = true;
+                    }
+                }
+
+                function hideLoading() {
+                    if (btnText && btnSpinner) {
+                        btnText.textContent = 'Foglalás véglegesítése';
+                        btnSpinner.classList.add('d-none');
+                        checkSubmitConditions();
+                    }
+                }
+
                 function triggerCalculation() {
-                    clearTimeout(debounceTimer);
+                    showLoading(); 
+                    isTimerRunning = true;
+
+                    clearTimeout(debounceTimer); 
                     debounceTimer = setTimeout(() => {
+                        isTimerRunning = false;
                         calculatePrice();
-                    }, 350); 
+                    }, 350);
                 }
 
                 function calculatePrice() {
-                    if (!checkInDate || !checkOutDate) return;
+                    if (!checkInDate || !checkOutDate) {
+                        if (!isTimerRunning) hideLoading();
+                        return;
+                    }
 
                     const adults = adultInput ? parseInt(adultInput.value) || 1 : 1;
                     const children = childInput ? parseInt(childInput.value) || 0 : 0;
                     const wantsHeating = heatingSwitch && heatingSwitch.checked ? 1 : 0;
                     const wantsAc = acSwitch && acSwitch.checked ? 1 : 0;
                     
-                    if(elAdultCount) {
-                        elAdultCount.textContent = adults;
-                    }
-                    if(elChildCount){
-                        elChildCount.textContent = children;
-                    }
+                    if(elAdultCount) elAdultCount.textContent = adults;
+                    if(elChildCount) elChildCount.textContent = children;
 
                     const payload = {
                         check_in: checkInDate,
@@ -349,10 +382,7 @@
                         wants_ac: wantsAc
                     };
 
-                    if (btnText && btnSpinner) {
-                        btnText.textContent = 'Árkalkuláció...';
-                        btnSpinner.classList.remove('d-none');
-                    }
+                    const currentFetchId = ++fetchCounter;
 
                     fetch('/kalkulacio', {
                         method: 'POST',
@@ -365,6 +395,8 @@
                     })
                     .then(response => response.json())
                     .then(data => {
+                        if (currentFetchId !== fetchCounter) return;
+
                         if (data.success) {
                             currentNights = data.nights;
                             if(elNights) elNights.textContent = data.nights;
@@ -401,23 +433,16 @@
                             }
 
                             checkSubmitConditions();
+                            
+                            if (!isTimerRunning) hideLoading();
                         } else {
-                            console.error("Laravel Hiba:", data.error, "Sor:", data.line);
-                            alert("Backend hiba történt! Nézd meg az F12 Console-t!\nHiba: " + data.error);
-                        }
-
-                        if (btnText && btnSpinner) {
-                            btnText.textContent = 'Foglalás véglegesítése';
-                            btnSpinner.classList.add('d-none');
+                            console.error("Laravel Hiba:", data.error);
+                            if (!isTimerRunning) hideLoading();
                         }
                     })
                     .catch(error => {
                         console.error('Hiba az árszámítás során:', error);
-                        
-                        if (btnText && btnSpinner) {
-                            btnText.textContent = 'Foglalás véglegesítése';
-                            btnSpinner.classList.add('d-none');
-                        }
+                        if (currentFetchId === fetchCounter && !isTimerRunning) hideLoading();
                     });
                 }
             });

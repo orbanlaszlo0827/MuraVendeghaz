@@ -16,6 +16,10 @@ Route::get('/', function () {
 
 Route::get('/foglalas', [BookingController::class, 'index'])->name('booking');
 Route::post('/kalkulacio', [BookingController::class, 'calculatePrice'])->name('booking.calculate');
+Route::post('/foglalas/mentes', [BookingController::class, 'store'])->name('booking.store');
+Route::get('/foglalas/sikeres', function () {
+    return view('frontend.successful_booking');
+})->name('booking.success');
 
 Route::get('/admin', function () {
     return view('auth.login');

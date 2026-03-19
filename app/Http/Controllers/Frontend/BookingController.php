@@ -5,6 +5,9 @@ namespace App\Http\Controllers\Frontend;
 use App\Models\SiteSetting;
 use App\Services\PriceCalculatorService;
 use Illuminate\Http\Request;
+use App\Models\Guest;
+use App\Models\Booking;
+use Illuminate\Support\Facades\DB;
 
 class BookingController
 {
@@ -46,5 +49,60 @@ class BookingController
             'ac_total' => number_format($result['ac_total'], 0, ',', '.'),
             'total_price' => number_format($result['total_price'], 0, ',', '.')
         ]);
+    }
+    public function store(Request $request, PriceCalculatorService $calculator)
+    {
+        $request->validate([
+            'check_in'  => 'required|date|after_or_equal:today',
+            'check_out' => 'required|date|after:check_in',
+            'adults'    => 'required|integer|min:1',
+            'children'  => 'required|integer|min:0',
+            'name'      => 'required|string|max:255',
+            'phone'     => 'required|string|max:50',
+            'email'     => 'required|email|max:255',
+            'terms'     => 'accepted',
+        ]);
+
+        // ÚJRASZÁMOLÁS!!
+        $priceResult = $calculator->calculate(
+            $request->check_in,
+            $request->check_out,
+            $request->adults,
+            $request->children,
+            $request->boolean('heating'),
+            $request->boolean('climate')
+        );
+
+        if (!$priceResult['success']) {
+            return back()->with('error', 'Érvénytelen dátumok lettek megadva.')->withInput();
+        }
+
+        DB::transaction(function () use ($request, $priceResult) {
+            
+            $guest = Guest::firstOrCreate(
+                ['email' => $request->email],
+                [
+                    'name' => $request->name,
+                    'phone' => $request->phone
+                ]
+            );
+
+            $notes = $request->comment;
+
+            Booking::create([
+                'guest_id'       => $guest->id,
+                'check_in'       => $request->check_in,
+                'check_out'      => $request->check_out,
+                'adults'         => $request->adults,
+                'children'       => $request->children,
+                'wants_ac'       => $request->boolean('climate'),
+                'wants_heating'  => $request->boolean('heating'),
+                'total_price'    => $priceResult['total_price'],
+                'status'         => 'pending',
+                'internal_notes' => $request->comment,
+            ]);
+        });
+
+        return redirect()->route('booking.success')->with('success', 'Sikeresen rögzítettük a foglalást!');
     }
 }
