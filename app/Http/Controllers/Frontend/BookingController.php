@@ -2,11 +2,12 @@
 
 namespace App\Http\Controllers\Frontend;
 
+use App\Models\Booking;
+use App\Models\Guest;
 use App\Models\SiteSetting;
 use App\Services\PriceCalculatorService;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
-use App\Models\Guest;
-use App\Models\Booking;
 use Illuminate\Support\Facades\DB;
 
 class BookingController
@@ -16,7 +17,24 @@ class BookingController
         $forcedHeating = SiteSetting::where('key', 'forced_heating_enabled')->value('value') == '1';
         $acEnabled = SiteSetting::where('key', 'ac_option_enabled')->value('value') == '1';
 
-        return view('frontend.booking', compact('forcedHeating', 'acEnabled'));
+        $bookings = Booking::whereIn('status', ['pending', 'confirmed'])
+            ->where('check_out', '>=', now()->format('Y-m-d'))
+            ->get();
+
+        $bookedDates = [];
+        foreach ($bookings as $booking) {
+            $from = Carbon::parse($booking->check_in)->addDay()->format('Y-m-d');
+            $to = Carbon::parse($booking->check_out)->subDay()->format('Y-m-d');
+
+            if ($from <= $to) {
+                $bookedDates[] = [
+                    'from' => $from,
+                    'to' => $to,
+                ];
+            }
+        }
+
+        return view('frontend.booking', compact('forcedHeating', 'acEnabled', 'bookedDates'));
     }
      function calculatePrice(Request $request, PriceCalculatorService $calculator)
     {
@@ -37,7 +55,10 @@ class BookingController
         );
 
         if (!$result['success']) {
-            return response()->json(['success' => false]);
+            return response()->json([
+                'success' => false,
+                'error' => $result['error'] ?? 'Ismeretlen hiba történt a kalkuláció során.'
+            ]);
         }
 
         return response()->json([

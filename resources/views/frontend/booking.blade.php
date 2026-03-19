@@ -34,6 +34,8 @@
                                 <div class="mb-4">
                                     <label class="form-label fs-4">Mikor szeretnétek jönni?</label>
                                     <input type="text" id="dateRange" name="dates" class="form-control form-control-lg bg-black bg-opacity-10" placeholder="Válasszon érkezési és távozási dátumot..." readonly>
+                                    
+                                    <div id="date-error" class="text-danger mt-2 d-none fw-bold fs-5"></div>
                                 </div>
                                 <div class="d-flex flex-column flex-lg-row justify-content-between mb-4 gap-3">
                                     <div class="w-100">
@@ -83,12 +85,13 @@
                     </div>
 
                     <div class="bg-light rounded-3 border mb-4 p-4 border-primary">
-                        <h3 class="mb-3 text-primary"><i class="bi bi-primary-circle me-2"></i>Helyszínen igényelhető extrák</h3>
-                        <ul class="mb-0 text-muted fs-5">
-                            <li><strong>Szauna használat:</strong> 5.000 Ft / alkalom (Érkezéskor egyeztethető)</li>
-                            <li><strong>Dézsa fürdő:</strong> 12.000 Ft / nap (Felfűtés miatt előre jelzést kérünk a megjegyzésben!)</li>
-                            <li><strong>Kerékpárbérlés:</strong> 3.000 Ft / nap</li>
+                        <h3 class="mb-3 text-primary"><i class="bi bi-info-circle me-2"></i>Helyszínen igényelhető extrák</h3>
+                        <ul class="mb-2 text-muted fs-5">
+                            <li><strong>Szauna használat:</strong> 3.000 Ft / óra (A felfűtéstől számítva.)</li>
+                            <li><strong>Fazekas bemutató:</strong> 15.000 Ft / óra (Korongozás szakemberrel, anyaggal.)</li>
+                            <li><strong>Sátrazás:</strong> 6.000 Ft / fő / éj (Az udvaron.)</li>
                         </ul>
+                        <a href="#">Kattints a teljes árlistáért és az egyéb tudnivalókért!</a>
                     </div>
 
                     <div class="bg-white rounded-3 border">
@@ -227,6 +230,19 @@
                 const elAcPrice = document.getElementById('summary-ac-price');
                 const elTotalPrice = document.getElementById('summary-total-price');
 
+                const rawDisabledDates = @json($bookedDates);
+
+                const parsedDisabledDates = rawDisabledDates.map(range => {
+                    return {
+                        from: new Date(range.from + "T00:00:00"),
+                        to: new Date(range.to + "T00:00:00")
+                    };
+                });
+
+                //console.log("Foglalt dátumok a Laraveltől:", disabledDates);
+
+                const elDateError = document.getElementById('date-error');
+
                 let checkInDate = null;
                 let checkOutDate = null;
                 let currentNights = 0;
@@ -241,7 +257,11 @@
                     minDate: "today",
                     dateFormat: "Y. M. d.",
                     showMonths: window.innerWidth > 768 ? 2 : 1,
-                    onChange: function(selectedDates) {
+                    disable: parsedDisabledDates,
+                    onChange: function(selectedDates, dateStr, instance) {
+
+                        if (elDateError) elDateError.classList.add('d-none');
+
                         if (selectedDates.length === 2) {
                             checkInDate = formatDateForBackend(selectedDates[0]);
                             checkOutDate = formatDateForBackend(selectedDates[1]);
@@ -397,6 +417,8 @@
                     .then(data => {
                         if (currentFetchId !== fetchCounter) return;
 
+                        if (elDateError) elDateError.classList.add('d-none');
+
                         if (data.success) {
                             currentNights = data.nights;
                             if(elNights) elNights.textContent = data.nights;
@@ -438,6 +460,14 @@
                         } else {
                             console.error("Laravel Hiba:", data.error);
                             if (!isTimerRunning) hideLoading();
+
+                            if (elDateError && data.error) {
+                                elDateError.textContent = data.error;
+                                elDateError.classList.remove('d-none');
+                            }
+                            
+                            disableSubmit(); 
+                            hideLoading();
                         }
                     })
                     .catch(error => {

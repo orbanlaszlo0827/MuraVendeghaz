@@ -2,6 +2,7 @@
 
 namespace App\Services;
 
+use App\Models\Booking;
 use App\Models\PriceItem;
 use App\Models\SiteSetting;
 use Carbon\Carbon;
@@ -15,7 +16,22 @@ class PriceCalculatorService
         $nights = $checkIn->diffInDays($checkOut);
 
         if ($nights <= 0) {
-            return ['success' => false];
+            return [
+                'success' => false, 
+                'error' => 'Érvénytelen dátumok! A távozásnak az érkezés után kell lennie.'
+            ];
+        }
+
+        $isOverbooked = Booking::whereIn('status', ['pending', 'confirmed'])
+            ->where('check_in', '<', $checkOut->format('Y-m-d'))
+            ->where('check_out', '>', $checkIn->format('Y-m-d'))
+            ->exists();
+
+        if ($isOverbooked) {
+            return [
+                'success' => false, 
+                'error' => 'A kiválasztott időpont időközben lefoglalásra került. Kérjük, válasszon másikat!'
+            ];
         }
 
         $numAdults = $adults > 8 ? 8 : $adults;
