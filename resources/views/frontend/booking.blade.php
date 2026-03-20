@@ -55,9 +55,9 @@
                                         <div>
                                             <label class="form-label mb-1 fs-4">Fűtés igénylése</label>
                                             @if($forcedHeating)
-                                                <p class="text-danger mb-0 fs-5 fw-bold">Kötelező fűtési szezon aktív</p>
+                                                <p class="text-danger mb-0 fs-5 fw-bold">Kötelező fűtési szezon aktív - az ár az időtartamtól függően változik.</p>
                                             @else
-                                                <p class="text-muted mb-0 fs-5">Szezonális felár, időtartamtól függ</p>
+                                                <p class="text-muted mb-0 fs-6"><em>Az ár az dőtartamtól függően változik.</em></p>
                                             @endif
                                         </div>
                                         
@@ -71,7 +71,7 @@
                                         <div class="d-flex justify-content-between align-items-center mb-4">
                                             <div>
                                                 <label class="form-label mb-1 fs-4">Légkondicionálás</label>
-                                                <p class="text-muted mb-0 fs-6">Hűtés és komfort (+2.000 Ft/nap). <br><em>A teljes időtartamra számolva. Ha csak bizonyos napokra kéri, a megjegyzésben jelezheti!</em></p>
+                                                <p class="text-muted mb-0 fs-6">Hűtés és komfort (+2.000 Ft/nap). <br><em>A teljes időtartamra számolva, tájékoztató jellegű. Ha csak bizonyos napokra kéri, a helyszínen módosítható!</em></p>
                                             </div>
                                             
                                             <div class="form-check form-switch fs-3 mb-0">
@@ -91,7 +91,7 @@
                             <li><strong>Fazekas bemutató:</strong> 15.000 Ft / óra (Korongozás szakemberrel, anyaggal.)</li>
                             <li><strong>Sátrazás:</strong> 6.000 Ft / fő / éj (Az udvaron.)</li>
                         </ul>
-                        <a href="#">Kattints a teljes árlistáért és az egyéb tudnivalókért!</a>
+                        <a class="ms-4" href="#">Kattints a teljes árlistáért és az egyéb tudnivalókért!</a>
                     </div>
 
                     <div class="bg-white rounded-3 border">
