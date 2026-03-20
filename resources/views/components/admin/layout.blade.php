@@ -24,7 +24,7 @@
           </button>
         </div>
 
-        <div class="col-lg-3 bg-dark text-white sidebar-container p-0">
+        <div class="col-lg-3 bg-dark text-white sidebar-container p-0 vh-lg-100">
           <div class="collapse d-lg-block p-3 sticky-top" id="sidebarMenu">
             <h3 class="h4 mb-4 d-none d-lg-block border-bottom pb-3">
               Admin Panel
@@ -37,7 +37,7 @@
               <a class="nav-link text-white-50 hover-white" href="#">
                 <i class="bi bi-calendar2-week me-2"></i> Naptár nézet
               </a>
-              <a class="nav-link text-white-50 hover-white" href="#">
+              <a class="nav-link text-white-50 hover-white {{ request()->routeIs('admin.bookings.index') ? 'active' : '' }}" href="{{ route('admin.bookings.index') }}">
                 <i class="bi bi-calendar-check me-2"></i> Foglalások
               </a>
               <a class="nav-link text-white-50 hover-white {{ request()->routeIs('admin.rooms.index') ? 'active' : '' }}" href="{{ route('admin.rooms.index') }}">

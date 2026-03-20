@@ -1,11 +1,12 @@
 <?php
 
+use App\Http\Controllers\Admin\BookingsController;
+use App\Http\Controllers\Frontend\BookingController;
 use App\Http\Controllers\Admin\GalleryImageController;
 use App\Http\Controllers\Admin\PriceItemController;
 use App\Http\Controllers\Admin\RoomContentController;
 use App\Http\Controllers\Admin\SiteSettingController;
 use App\Http\Controllers\Auth\LoginController;
-use App\Http\Controllers\Frontend\BookingController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Session;
@@ -59,4 +60,8 @@ Route::middleware('auth')->group(function () {
     Route::get('/admin/vezerlopult', function () {
         return view('admin.dashboard');
     })->name('admin.dashboard');
+
+    Route::get('/foglalasok', [BookingsController::class, 'index'])->name('admin.bookings.index');
+    Route::get('/foglalasok/{booking}', [BookingsController::class, 'show'])->name('admin.bookings.show');
+    Route::delete('/foglalasok/{booking}', [BookingsController::class, 'destroy'])->name('admin.bookings.destroy');
 });
