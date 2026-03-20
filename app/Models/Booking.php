@@ -4,10 +4,12 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Booking extends Model
 {
-protected $fillable = [
+    use SoftDeletes;
+    protected $fillable = [
         'guest_id',
         'handled_by_user_id',
         'check_in',
