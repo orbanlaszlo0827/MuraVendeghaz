@@ -9,6 +9,9 @@ use App\Services\PriceCalculatorService;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\GuestBookingConfirmation;
+use App\Mail\AdminNewBookingNotification;
 
 class BookingController
 {
@@ -98,7 +101,7 @@ class BookingController
             return back()->with('error', 'Érvénytelen dátumok lettek megadva.')->withInput();
         }
 
-        DB::transaction(function () use ($request, $priceResult) {
+        $booking = DB::transaction(function () use ($request, $priceResult) {
             
             $guest = Guest::updateOrCreate(
                 ['email' => $request->email],
@@ -110,7 +113,7 @@ class BookingController
 
             $notes = $request->comment;
 
-            Booking::create([
+            return Booking::create([
                 'guest_id'       => $guest->id,
                 'check_in'       => $request->check_in,
                 'check_out'      => $request->check_out,
@@ -123,6 +126,21 @@ class BookingController
                 'internal_notes' => $request->comment,
             ]);
         });
+
+        try {
+            // A) Vendég értesítése
+            Mail::to($booking->guest->email)->send(new GuestBookingConfirmation($booking));
+
+            sleep(5);
+
+            // B) Admin értesítése (Lekérjük a beállításokból, vagy egy fallback címet adunk)
+            $adminEmail = SiteSetting::where('key', 'contact_email')->value('value') ?? 'info@muravendeghaz.hu';
+            Mail::to($adminEmail)->send(new AdminNewBookingNotification($booking));
+        } catch (\Exception $e) {
+            // Ha az e-mail küldés elszáll (pl. rossz SMTP beállítás), a foglalás attól még létrejött!
+            // Ezt csak logoljuk, hogy a fejlesztő lássa, de a vendéget nem akasztjuk meg vele.
+            \Illuminate\Support\Facades\Log::error('E-mail küldési hiba: ' . $e->getMessage());
+        }
 
         return redirect()->route('booking.success')->with('success', 'Sikeresen rögzítettük a foglalást!');
     }
