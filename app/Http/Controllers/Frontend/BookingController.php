@@ -114,31 +114,28 @@ class BookingController
             $notes = $request->comment;
 
             return Booking::create([
-                'guest_id'       => $guest->id,
-                'check_in'       => $request->check_in,
-                'check_out'      => $request->check_out,
-                'adults'         => $request->adults,
-                'children'       => $request->children,
-                'wants_ac'       => $request->boolean('climate'),
-                'wants_heating'  => $request->boolean('heating'),
-                'total_price'    => $priceResult['total_price'],
-                'status'         => 'pending',
-                'internal_notes' => $request->comment,
+                'guest_id'          => $guest->id,
+                'check_in'          => $request->check_in,
+                'check_out'         => $request->check_out,
+                'adults'            => $request->adults,
+                'children'          => $request->children,
+                'wants_ac'          => $request->boolean('climate'),
+                'wants_heating'     => $priceResult['wants_heating'],
+                'total_price'       => $priceResult['total_price'],
+                'status'            => 'pending',
+                'guest_comment'     => $request->comment,
+                'internal_notes'    => null,
             ]);
         });
 
         try {
-            // A) Vendég értesítése
             Mail::to($booking->guest->email)->send(new GuestBookingConfirmation($booking));
 
-            sleep(5);
+            sleep(10);
 
-            // B) Admin értesítése (Lekérjük a beállításokból, vagy egy fallback címet adunk)
             $adminEmail = SiteSetting::where('key', 'contact_email')->value('value') ?? 'info@muravendeghaz.hu';
             Mail::to($adminEmail)->send(new AdminNewBookingNotification($booking));
         } catch (\Exception $e) {
-            // Ha az e-mail küldés elszáll (pl. rossz SMTP beállítás), a foglalás attól még létrejött!
-            // Ezt csak logoljuk, hogy a fejlesztő lássa, de a vendéget nem akasztjuk meg vele.
             \Illuminate\Support\Facades\Log::error('E-mail küldési hiba: ' . $e->getMessage());
         }
 

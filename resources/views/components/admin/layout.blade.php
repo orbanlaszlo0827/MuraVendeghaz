@@ -37,7 +37,7 @@
               <a class="nav-link text-white-50 hover-white" href="#">
                 <i class="bi bi-calendar2-week me-2"></i> Naptár nézet
               </a>
-              <a class="nav-link text-white-50 hover-white {{ request()->routeIs('admin.bookings.index') ? 'active' : '' }}" href="{{ route('admin.bookings.index') }}">
+              <a class="nav-link text-white-50 hover-white {{ request()->routeIs('admin.bookings.index') ? 'active' : '' }} {{ request()->routeIs('admin.bookings.show') ? 'active' : '' }}" href="{{ route('admin.bookings.index') }}">
                 <i class="bi bi-calendar-check me-2"></i> Foglalások
               </a>
               <a class="nav-link text-white-50 hover-white {{ request()->routeIs('admin.rooms.index') ? 'active' : '' }}" href="{{ route('admin.rooms.index') }}">

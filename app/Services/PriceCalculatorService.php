@@ -70,6 +70,7 @@ class PriceCalculatorService
         return [
             'success' => true,
             'nights' => $nights,
+            'wants_heating' => $finalWantsHeating,
             'adult_total' => $adultTotal,
             'child_total' => $childTotal,
             'heating_total' => $heatingTotal,

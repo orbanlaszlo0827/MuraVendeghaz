@@ -61,7 +61,8 @@ Route::middleware('auth')->group(function () {
         return view('admin.dashboard');
     })->name('admin.dashboard');
 
-    Route::get('/foglalasok', [BookingsController::class, 'index'])->name('admin.bookings.index');
-    Route::get('/foglalasok/{booking}', [BookingsController::class, 'show'])->name('admin.bookings.show');
-    Route::delete('/foglalasok/{booking}', [BookingsController::class, 'destroy'])->name('admin.bookings.destroy');
+    Route::get('admin/foglalasok', [BookingsController::class, 'index'])->name('admin.bookings.index');
+    Route::get('admin/foglalasok/{booking}', [BookingsController::class, 'show'])->name('admin.bookings.show');
+    Route::delete('admin/foglalasok/{booking}', [BookingsController::class, 'destroy'])->name('admin.bookings.destroy');
+    Route::patch('admin/foglalasok/{booking}/update', [BookingsController::class, 'update'])->name('admin.bookings.update');
 });

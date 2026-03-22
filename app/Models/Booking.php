@@ -20,6 +20,7 @@ class Booking extends Model
         'wants_ac',
         'total_price',
         'status',
+        'guest_comment',
         'internal_notes',
     ];
 
