@@ -24,8 +24,8 @@
           </button>
         </div>
 
-        <div class="col-lg-3 bg-dark text-white sidebar-container p-0 vh-lg-100">
-          <div class="collapse d-lg-block p-3 sticky-top" id="sidebarMenu">
+        <div class="col-lg-3 bg-dark text-white sidebar-container p-0">
+          <div class="collapse d-lg-block p-3 sticky-top vh-100" id="sidebarMenu">
             <h3 class="h4 mb-4 d-none d-lg-block border-bottom pb-3">
               Admin Panel
             </h3>
@@ -60,7 +60,7 @@
           </div>
         </div>
         
-        <main class="col-12 col-xl-7 offset-xl-1 col-lg-9 py-3">
+        <main class="col-12 col-lg-9">
           @if (session('success'))
           <div class="alert alert-success alert-dismissible fade show m-3" role="alert">
             {{ session('success') }}
