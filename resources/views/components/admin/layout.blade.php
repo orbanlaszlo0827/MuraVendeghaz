@@ -34,7 +34,7 @@
               <a class="nav-link text-white-50 hover-white {{ request()->routeIs('admin.dashboard') ? 'active' : '' }}" href="{{ route('admin.dashboard') }}">
                 <i class="bi bi-speedometer2 me-2"></i> Vezérlőpult
               </a>
-              <a class="nav-link text-white-50 hover-white" href="#">
+              <a class="nav-link text-white-50 hover-white {{ request()->routeIs('admin.bookings.calendar') ? 'active' : '' }}" href="{{ route('admin.bookings.calendar') }}">
                 <i class="bi bi-calendar2-week me-2"></i> Naptár nézet
               </a>
               <a class="nav-link text-white-50 hover-white {{ request()->routeIs('admin.bookings.index') ? 'active' : '' }} {{ request()->routeIs('admin.bookings.show') ? 'active' : '' }}" href="{{ route('admin.bookings.index') }}">

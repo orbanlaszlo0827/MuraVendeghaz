@@ -64,4 +64,35 @@ class BookingsController
 
         return redirect()->route('admin.bookings.index')->with('success', 'A foglalás sikeresen törölve lett.');
     }
+
+    public function calendar()
+    {
+        $bookings = Booking::with('guest')
+            ->whereIn('status', ['pending', 'confirmed'])
+            ->get();
+
+        $events = [];
+        foreach ($bookings as $booking) {
+            
+            $bgColor = $booking->status == 'confirmed' ? '#198754' : '#ffc107'; 
+            $textColor = $booking->status == 'confirmed' ? '#ffffff' : '#000000';
+
+            $events[] = [
+                'id'    => $booking->id,
+                'title' => $booking->guest->name . ' (' . ($booking->adults + $booking->children) . ' fő)',
+                
+                'start' => \Carbon\Carbon::parse($booking->check_in)->format('Y-m-d\T14:00:00'),
+                
+                'end'   => \Carbon\Carbon::parse($booking->check_out)->format('Y-m-d\T10:00:00'),
+                
+                'allDay'=> false, 
+                
+                'color' => $bgColor,
+                'textColor' => $textColor,
+                'url'   => route('admin.bookings.show', $booking->id),
+            ];
+        }
+
+        return view('admin.bookings.calendar', compact('events'));
+    }
 }

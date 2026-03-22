@@ -1,4 +1,6 @@
 <x-admin.layout>
+    @section('title', 'Foglalás kezelése')
+
     <div class="container-fluid py-4">
     
     <div class="d-flex justify-content-between align-items-center mb-4">
@@ -119,10 +121,3 @@
     </form>
 </div>
 </x-admin.layout>
-
-
-
-
-
-
-

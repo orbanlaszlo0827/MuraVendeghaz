@@ -19,9 +19,9 @@ Route::get('/foglalas', [BookingController::class, 'index'])->name('booking.inde
 Route::post('/kalkulacio', [BookingController::class, 'calculatePrice'])->name('booking.calculate');
 Route::post('/foglalas/mentes', [BookingController::class, 'store'])->name('booking.store');
 Route::get('/foglalas/sikeres', function () {
-    if (!session()->has('success')) {
-        return redirect()->route('booking.index');
-    }
+    // if (!session()->has('success')) {
+    //     return redirect()->route('booking.index');
+    // }
     return view('frontend.successful_booking');
 })->name('booking.success');
 
@@ -60,6 +60,8 @@ Route::middleware('auth')->group(function () {
     Route::get('/admin/vezerlopult', function () {
         return view('admin.dashboard');
     })->name('admin.dashboard');
+
+    Route::get('admin/foglalasok/naptar', [BookingsController::class, 'calendar'])->name('admin.bookings.calendar');
 
     Route::get('admin/foglalasok', [BookingsController::class, 'index'])->name('admin.bookings.index');
     Route::get('admin/foglalasok/{booking}', [BookingsController::class, 'show'])->name('admin.bookings.show');

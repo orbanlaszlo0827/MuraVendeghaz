@@ -131,5 +131,6 @@ $font-size-base: 1rem;
 }
 
 .icon-giant-check {
-    font-size: 10rem !important; 
+    font-size: clamp(6rem, 10vw, 10rem) !important;
+    line-height: 1 !important;
 }

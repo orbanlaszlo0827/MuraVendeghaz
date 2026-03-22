@@ -10,7 +10,7 @@
     <div class="container mt-1">
         <div class="row f-flex flex-column justify-content-center mb-3">
             <div class="col text-center">
-                <i class="bi bi-check-circle-fill icon-giant-check d-block text-success"></i>
+                <i class="bi bi-check-circle-fill icon-giant-check d-block text-success my-1 my-md-3"></i>
 
                 <h3>Köszönjük! Foglalási igényét rögzítettük.</h3>
                 <p>Küldtünk egy visszaigazoló e-mailt a megadott címre a további teendőkkel és az utalási adatokkal.</p>

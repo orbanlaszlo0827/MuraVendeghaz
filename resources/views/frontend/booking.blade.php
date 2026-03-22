@@ -57,7 +57,7 @@
                                             @if($forcedHeating)
                                                 <p class="text-danger mb-0 fs-5 fw-bold">Kötelező fűtési szezon aktív - az ár az időtartamtól függően változik.</p>
                                             @else
-                                                <p class="text-muted mb-0 fs-6"><em>Az ár az dőtartamtól függően változik.</em></p>
+                                                <p class="text-muted mb-0 fs-6">Az ár az dőtartamtól függően változik.</p>
                                             @endif
                                         </div>
                                         
