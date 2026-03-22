@@ -5,13 +5,13 @@
 
     @section('title', 'Galéria Szerkesztése')
     
-    <form action="{{ route('admin.gallery.store') }}" class="dropzone" id="myDropzone">
+    <form action="{{ route('admin.gallery.store') }}" class="dropzone mt-3" id="myDropzone">
     @csrf
     </form>
 
     @csrf
     @method('PATCH')
-    <div class="mt-4">
+    <div class="my-4">
         <h2>Feltöltött képek</h2>
         <div class="row g-3 mt-2">
             @foreach($images as $image)

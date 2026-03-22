@@ -4,7 +4,7 @@
     <form action="{{ route('admin.prices.updateAll') }}" method="POST">
         @csrf
         @method('PUT') 
-        <div class="row">
+        <div class="row p-3">
             @foreach($prices as $price)
                 @if (!in_array($price->category, $categories)) 
                     <h3 class="mb-4">{{ $price->category }}</h3>
@@ -18,7 +18,7 @@
                         <div class="input-group">
                             <input step="500" min="0" type="number" 
                                 name="prices[{{ $price->id }}][price_value]" 
-                                class="form-control" 
+                                class="form-control bg-black bg-opacity-10" 
                                 value="{{ $price->price_value }}">
                             
                             <span class="input-group-text">{{ $price->unit }}</span>
@@ -26,18 +26,18 @@
                     </div>
                 </div>
             @endforeach
+            <button type="submit" class="btn btn-success mt-3">Összes ár mentése</button>
         </div>
 
-        <button type="submit" class="btn btn-success mt-3">Összes ár mentése</button>
     </form>
+    
     <hr class="my-5">
-    <h3 class="mb-4">Globális Rendszerbeállítások</h3>
-
     <form action="{{ route('admin.settings.updateAll') }}" method="POST">
         @csrf
         @method('PUT')
-
-        <div class="row">
+        
+        <div class="row p-3">
+            <h3 class="mb-4">Globális Rendszerbeállítások</h3>
             @foreach($settings as $setting)
                 <div class="col-md-6 mb-3">
                     <div class="card p-3 h-100 bg-white">
@@ -45,12 +45,12 @@
                         
                         <div class="card-body p-0">
                             @if ($setting->value == '1' || $setting->value == '0')
-                                <select name="settings[{{ $setting->key }}]" class="form-control">
+                                <select name="settings[{{ $setting->key }}]" class="form-control bg-black bg-opacity-10">
                                     <option value="1" {{ $setting->value == '1' ? 'selected' : '' }}>Bekapcsolva (Igen)</option>
                                     <option value="0" {{ $setting->value == '0' ? 'selected' : '' }}>Kikapcsolva (Nem)</option>
                                 </select>
                             @else
-                                <input class="form-control" type="text"
+                                <input class="form-control bg-black bg-opacity-10" type="text"
                                 name="settings[{{ $setting->key }}]" 
                                 value="{{ $setting->value }}">
                             @endif
@@ -60,8 +60,8 @@
                     </div>
                 </div>
             @endforeach
+            <button type="submit" class="btn btn-success mt-3">Beállítások mentése</button>
         </div>
 
-        <button type="submit" class="btn btn-success mt-3">Beállítások mentése</button>
     </form>
 </x-admin.layout>

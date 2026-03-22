@@ -18,7 +18,7 @@
         <li><strong>Fűtés:</strong> {{ $booking->wants_heating ? 'Igen' : 'Nem' }}</li>
         <li><strong>Klíma:</strong> {{ $booking->wants_ac ? 'Igen' : 'Nem' }}</li>
         <li><strong>Végösszeg:</strong> {{ number_format($booking->total_price, 0, ',', '.') }} Ft</li>
-        <li><strong>Megjegyzés:</strong> {{ $booking->internal_notes ?? '-' }}</li>
+        <li><strong>Megjegyzés:</strong> {{ $booking->guest_comment ?? '-' }}</li>
     </ul>
 
     <a href="#">Jelentkezz be az Admin felületre a foglalás kezeléséhez!</a>

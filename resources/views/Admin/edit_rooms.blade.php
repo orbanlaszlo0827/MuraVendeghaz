@@ -3,7 +3,7 @@
     <form action="{{ route('admin.rooms.updateAll') }}" method="POST" enctype="multipart/form-data">
         @csrf
         @method('PUT') 
-        <div class="row">
+        <div class="row p-3">
             <h1>Szobák szerkesztése</h1>
             @foreach($rooms as $room)
                 <div class="col-12 col-lg-6 mb-4 mt-2">
@@ -19,8 +19,8 @@
                     </div>
                 </div>
             @endforeach
+            <button type="submit" class="btn btn-success">Mentés</button>
         </div>
-        <button type="submit" class="btn btn-success mt-3">Mentés</button>
     </form>
 
     @push('scripts')
