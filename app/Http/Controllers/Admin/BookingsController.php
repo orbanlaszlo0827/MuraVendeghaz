@@ -7,11 +7,26 @@ use Illuminate\Http\Request;
 
 class BookingsController
 {
-    public function index()
+    public function index(Request $request)
     {
-        $bookings = Booking::with('guest')->latest()->paginate(15);
+        // Alap lekérdezés a vendégekkel
+        $query = Booking::with('guest')->latest();
+
+        if ($request->has('trashed') && $request->trashed == 'only') {
+            $query->onlyTrashed();
+        }
+
+        $bookings = $query->paginate(15);
 
         return view('admin.bookings.index', compact('bookings'));
+    }
+    public function restore($id)
+    {
+        $booking = Booking::onlyTrashed()->findOrFail($id);
+        
+        $booking->restore();
+
+        return redirect()->route('admin.bookings.index')->with('success', 'A foglalás sikeresen visszaállítva a lomtárból!');
     }
     public function show(Booking $booking)
     {
