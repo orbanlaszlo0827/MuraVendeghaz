@@ -99,13 +99,13 @@
                             </a>
                         </li>
                         <li>
-                            <a href="tel:+36305054042" class="nav-link nav-link-animated text-black">
-                                <i class="bi bi-telephone-fill"></i> +36 30 505 4042
+                            <a href="tel:{{ str_replace(' ', '', $siteSettings['contact_phone'] ?? '') }}" class="nav-link nav-link-animated text-black">
+                                <i class="bi bi-telephone-fill"></i> {{ $siteSettings['contact_phone'] ?? '+36 30 000 0000' }}
                             </a>
                         </li>
                         <li>
-                            <a href="mailto:info@muravendeghaz.hu" class="nav-link nav-link-animated text-black">
-                                <i class="bi bi-envelope-fill"></i> info@muravendeghaz.hu
+                            <a href="mailto:{{ $siteSettings['contact_email'] ?? 'info@muravendeghaz.hu' }}" class="nav-link nav-link-animated text-black">
+                                <i class="bi bi-envelope-fill"></i> {{ $siteSettings['contact_email'] ?? 'info@muravendeghaz.hu' }}
                             </a>
                         </li>
                     </ul>
