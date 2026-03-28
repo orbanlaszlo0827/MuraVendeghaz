@@ -21,9 +21,10 @@ class PriceItemSeeder extends Seeder
             ['title' => 'Nappali vendég (gyermek)', 'price_value' => 4000, 'unit' => 'Ft/fő/éj', 'name' => 'nappaliGyermek', 'category' => 'Egyéb', 'sort_order' => 8],
             ['title' => 'Klíma használat', 'price_value' => 2000, 'unit' => 'Ft/nap', 'name' => 'klima', 	'category'=>'Egyéb','sort_order'=>9],
             ['title' => 'Rugalmas érkezés', 'price_value' => 1000, 'unit' => 'Fő/óra', 'name' => 'rugalmas_erkezes', 	'category'=>'Egyéb','sort_order'=>10],
-            ['title' => 'Szauna használat', 'price_value' => 3000, 'unit' => 'Ft/óra',	'name'=>'szauna','category'=>'Egyéb','sort_order'=>11],
-            ['title' => 'Fazekas bemutató', 'price_value' => 15000, 'unit' => 'Ft/óra', 'name' => 'fazekas', 'category' => 'Egyéb', 'sort_order' => 12],
-            ['title' => 'Sátrazás', 'price_value' => 6000, 'unit' => 'Ft/fő/éj', 'name' => 'sator', 'category' => 'Egyéb', 'sort_order' => 13],
+
+            ['title' => 'Szauna használat', 'price_value' => 3000, 'unit' => 'Ft/óra',	'name'=>'szauna','category'=>'Extra','sort_order'=>11],
+            ['title' => 'Fazekas bemutató', 'price_value' => 15000, 'unit' => 'Ft/óra', 'name' => 'fazekas', 'category' => 'Extra', 'sort_order' => 12],
+            ['title' => 'Sátrazás', 'price_value' => 6000, 'unit' => 'Ft/fő/éj', 'name' => 'sator', 'category' => 'Extra', 'sort_order' => 13],
 
             ['title' => '1 éjszaka', 'price_value' => 7000, 'unit' => 'Ft', 'name' => '1ej_futes', 'category' => 'Fűtési felár', 'sort_order' => 14],
             ['title' => '2 éjszaka', 'price_value' => 5000, 'unit' => 'Ft/éj', 'name' => '2ej_futes', 'category' => 'Fűtési felár', 'sort_order' => 15],
