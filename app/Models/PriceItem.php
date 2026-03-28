@@ -18,4 +18,20 @@ class PriceItem extends Model
     protected $casts = [
         'is_active' => 'boolean',
     ];
+    public function getUnitFirstAttribute()
+    {
+        $parts = explode('/', $this->unit);
+        return $parts[0] ?? $this->unit;
+    }
+
+    public function getUnitSecondAttribute()
+    {
+        $parts = explode('/', $this->unit);
+        return $parts[1] ?? null;
+    }
+    public function getUnitThirdAttribute()
+    {
+        $parts = explode('/', $this->unit);
+        return $parts[2] ?? null;
+    }
 }

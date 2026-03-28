@@ -47,7 +47,7 @@
                             <a class="nav-link frontend-nav-ha" href="#">Galéria</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link frontend-nav-ha" href="#">Árak & Kapcsolat</a>
+                            <a class="nav-link frontend-nav-ha" href="{{ route('prices_contact') }}">Árak & Kapcsolat</a>
                         </li>
                         
                         <li class="nav-item mt-2 mt-lg-0">
