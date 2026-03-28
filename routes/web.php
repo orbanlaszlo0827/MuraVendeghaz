@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Admin\BookingsController;
+use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Frontend\BookingController;
 use App\Http\Controllers\Admin\GalleryImageController;
 use App\Http\Controllers\Admin\PriceItemController;
@@ -57,9 +58,7 @@ Route::middleware('auth')->group(function () {
 
     Route::patch('/admin/galeria/{id}/kategoria', [GalleryImageController::class, 'updateCategory'])->name('admin.gallery.updateCategory');
 
-    Route::get('/admin/vezerlopult', function () {
-        return view('admin.dashboard');
-    })->name('admin.dashboard');
+    Route::get('admin/vezerlopult', [DashboardController::class, 'index'])->name('admin.dashboard');
 
     Route::get('admin/foglalasok/naptar', [BookingsController::class, 'calendar'])->name('admin.bookings.calendar');
 
