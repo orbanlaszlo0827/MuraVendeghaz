@@ -28,6 +28,7 @@ Route::get('/foglalas/sikeres', function () {
 })->name('booking.success');
 
 Route::get('/arak&kapcsolat', [PageController::class, 'prices_contact'])->name('prices_contact');
+Route::post('/kapcsolat', [PageController::class, 'contactSubmit'])->name('contact.submit');
 
 
 Route::get('/admin', function () {

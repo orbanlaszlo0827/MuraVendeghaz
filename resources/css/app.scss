@@ -5,7 +5,7 @@ $mura-poppy: #CE362C;
 $mura-blue: #6bbaff;
 $mura-sand: #E8D8C8;
 $mura-light: #F9F6F0;
-$mura-dark: #555555;
+$mura-dark: #673500;
 
 $primary: $mura-terracotta;
 $secondary: $mura-sand;
@@ -43,6 +43,12 @@ $font-size-base: 1rem;
 
 @import 'bootstrap-icons/font/bootstrap-icons.css';
 @import 'bootstrap/scss/bootstrap';
+
+[class^="ph-"], [class*=" ph-"], .ph {
+    font-size: 1em !important;     /* Mindig akkora lesz, mint a mellette lévő szöveg */
+    line-height: 1 !important;     /* Nem rontja el a doboz magasságát */
+    vertical-align: -0.125em;      /* Egy icipicit lejjebb tolja, hogy optikailag tökéletesen egy vonalban legyen a betűkkel */
+}
 
 .hover-white {
     transition: color 0.3s ease-in-out, background-color 0.3s ease-in-out;
@@ -143,4 +149,51 @@ $font-size-base: 1rem;
     transform: translateY(-5px); 
     box-shadow: 0 .5rem 1rem rgba(0,0,0,.15)!important;
     cursor: pointer; 
+}
+
+.accordion {
+    --bs-accordion-active-bg: #ffffff;
+    --bs-accordion-active-color: #000000;
+    --bs-accordion-btn-focus-box-shadow: none;
+    --bs-accordion-bg: #ffffff;
+    --bs-accordion-border-width: 0;
+}
+
+.accordion-item {
+    border: 1px solid #e2e8f0;
+    border-radius: 1rem !important;
+    overflow: hidden;
+    background-color: #ffffff;
+    transition: all 0.3s ease;
+}
+
+.accordion-button {
+    font-weight: 700;
+    border-radius: 1rem !important; 
+    padding: 1.25rem 1.5rem;
+}
+
+.accordion-item:has(.accordion-button:not(.collapsed)) {
+    border: 1px solid #cbd5e1; 
+    box-shadow: 0 10px 15px -3px rgba(0,0,0,0.05) !important; 
+}
+
+.accordion-button:not(.collapsed) {
+    box-shadow: none !important;
+}
+
+.orangeColor {
+    color: #fd7e14;
+}
+
+.orangeBox {
+    border-color: #fd7e14 !important; 
+    background-color: rgba(253, 126, 20, 0.1); 
+    color: #d96b00;
+}
+
+.purpleBox {
+    border-color: #6f42c1 !important; 
+    background-color: rgba(111, 66, 193, 0.1); 
+    color: #6f42c1;
 }

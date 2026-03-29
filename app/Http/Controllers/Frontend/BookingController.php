@@ -131,7 +131,7 @@ class BookingController
         try {
             Mail::to($booking->guest->email)->send(new GuestBookingConfirmation($booking));
 
-            sleep(10);
+            //sleep(10);
 
             $adminEmail = SiteSetting::where('key', 'contact_email')->value('value') ?? 'info@muravendeghaz.hu';
             Mail::to($adminEmail)->send(new AdminNewBookingNotification($booking));
