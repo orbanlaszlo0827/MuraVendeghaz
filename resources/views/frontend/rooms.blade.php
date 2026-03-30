@@ -1,13 +1,7 @@
 <x-frontend.layout heroImage="rooms/hero.jpg" heroTitle="Szállásunk">
-    <section class="mt-3" id="introduction">
-        <div class="container-fluid bg-secondary bg-opacity-25 py-3">
-            <div class="row d-flex justify-content-center align-items-center">
-                <div class="col-12 col-md-8 col-lg-6 text-center">
-                    <p class="lead m-0">A vendégház két összenyitható, de szeparálható lakrészből áll, összesen 3 hálószobával és 2 fürdőszobával. Ideális elosztás nagycsaládoknak vagy baráti társaságoknak, akik együtt szeretnének lenni, de igénylik a privát szférát is. Teljes kapacitás: 10 fő (fix ágyakon) + 2 fő pótágyon.</p>
-                </div>
-            </div>
-        </div>
-    </section>
+    <x-frontend.introduction>
+        <p class="lead m-0">A vendégház két összenyitható, de szeparálható lakrészből áll, összesen 3 hálószobával és 2 fürdőszobával. Ideális elosztás nagycsaládoknak vagy baráti társaságoknak, akik együtt szeretnének lenni, de igénylik a privát szférát is. Teljes kapacitás: 10 fő (fix ágyakon) + 2 fő pótágyon.</p>
+    </x-frontend.introduction>
     <section class="mt-3" id="rooms">
         <div class="container py-5">
 
