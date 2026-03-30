@@ -6,7 +6,7 @@
         </div>
     @endif
     <section class="mt-3" id="prices">
-        <div class="container-fluid p-3 p-lg-5">
+        <div class="container p-3 p-lg-5">
             <div class="row d-flex justify-content-center">
                 <div class="col-12 col-md-10 col-lg-8 col-xl-6">
                     <div class="card shadow-sm border-0 border-top border-4 border-black rounded-4 bg-white mb-5">

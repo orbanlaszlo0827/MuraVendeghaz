@@ -32,6 +32,10 @@ Route::post('/kapcsolat', [PageController::class, 'contactSubmit'])->name('conta
 
 Route::get('/szobak', [PageController::class, 'rooms'])->name('rooms');
 
+Route::get('/kornyek', function () {
+    return view('frontend.area');
+})->name('area');
+
 
 Route::get('/admin', function () {
     return view('auth.login');

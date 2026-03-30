@@ -69,7 +69,7 @@ $font-size-base: 1rem;
 }
 
 .frontend-nav-ha {
-    &:hover, &:active {
+    &:hover, &.active {
         text-decoration: underline;
     }
 }
@@ -242,4 +242,73 @@ $font-size-base: 1rem;
     i {
         font-size: 2rem;
     }
+}
+
+//area
+
+.overlay-text {
+    font-family: sans-serif;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    font-size: 2rem;
+    color: white;
+    text-align: center;
+}
+
+.img-fit-cover {
+    object-fit: cover;
+    object-position: center;
+    width: 100%;
+    height: 100%;
+}
+
+.obj-fit {
+    object-fit: cover;
+}
+
+//area carousel
+
+.custom-indicators {
+    position: relative;
+    margin-top: 2rem;
+    margin-bottom: 0;
+    gap: 6px;
+}
+
+.custom-indicators [data-bs-target] {
+    background-color: #6c757d;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    border: none;
+    opacity: 0.4;
+    padding: 0;
+}
+
+.custom-indicators .active {
+    opacity: 1;
+    background-color: #212529;
+}
+
+.nav-btn {
+    width: 45px; 
+    height: 45px; 
+    display: flex; 
+    justify-content: center; 
+    align-items: center;
+    border-width: 2px;
+}
+
+.carousel-images {
+    height: 250px;
+    object-fit: cover;
+}
+
+.mapFrame {
+    height: 450px;
+}
+
+.areaIcons {
+    width: 45px;
+    height: 45px;
 }
