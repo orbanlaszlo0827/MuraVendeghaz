@@ -26,9 +26,9 @@ class RoomContentSeeder extends Seeder
                 'description' => 'Különálló, tágas hálószoba a ház csendesebb részén, kényelmes franciaággyal és gardróbbal, a maximális kényelemért.'
             ],
             [
-                'section_name' => 'hallway_and_bath',
-                'title' => 'Előszoba és közös használatú fürdőszoba',
-                'description' => 'Praktikus kialakítású előtér és modern, tiszta fürdőszoba zuhanyzóval, mosógéppel és alapvető tisztálkodási szerekkel ellátva.'
+                'section_name' => 'bath',
+                'title' => 'Közös használatú és privát fürdőszoba',
+                'description' => 'Modern, tiszta fürdőszoba zuhanyzóval, - a közös használatú helyiségben - mosógéppel és alapvető tisztálkodási szerekkel ellátva.'
             ],
         ];
 

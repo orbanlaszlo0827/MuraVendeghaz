@@ -88,7 +88,7 @@
         </div>
     </section>
 
-    <section id="reviews" class="py-4 my-4 my-lg-5 py-lg-5">
+    <section id="reviews" class="py-4 mt-4 my-lg-5 py-lg-5">
         <div class="container my-lg-5">
             <div class="row g-4">
                 <div class="col-12 col-lg-4">
@@ -157,5 +157,5 @@
             </div>
         </div>
     </section>
-
+    <x-frontend.cta />
 </x-frontend.layout>

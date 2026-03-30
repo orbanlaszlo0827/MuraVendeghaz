@@ -10,7 +10,7 @@
         
         <div class="position-absolute top-0 inset-s-0 w-100 h-100 d-flex justify-content-center align-items-center">
             
-            <div class="bg-dark bg-opacity-75 px-4 py-3 rounded text-center shadow">
+            <div class="hero-text-bg px-4 py-3 rounded text-center shadow">
                 <h1 class="text-white fw-bold mb-0 display-3 ls-2">Foglalás</h1>
             </div>
         </div>

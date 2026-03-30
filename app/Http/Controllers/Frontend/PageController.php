@@ -3,9 +3,10 @@
 namespace App\Http\Controllers\Frontend;
 
 use App\Models\PriceItem;
+use App\Models\RoomContent;
 use App\Models\SiteSetting;
-use Illuminate\Support\Facades\Mail;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 
 class PageController
 {
@@ -59,5 +60,64 @@ class PageController
         });
 
         return back()->with('success', 'Köszönjük! Az üzenetet sikeresen elküldtük, hamarosan válaszolunk.');
+    }
+
+    public function rooms()
+    {
+        $rooms = RoomContent::all()->keyBy('section_name');
+
+        $roomFeatures = [
+            [
+                'icon'  => 'bi-moon-stars-fill',
+                'color' => 'info',
+                'title' => 'Zavartalan alvás',
+                'desc'  => 'Redőny, sötétítő függöny és szúnyogháló minden ablakon.'
+            ],
+            [
+                'icon'  => 'bi-plug-fill',
+                'color' => 'warning',
+                'title' => 'Töltés & Áram',
+                'desc'  => 'Konnektorok közvetlenül minden ágy mellett.'
+            ],
+            [
+                'icon'  => 'bi-cup-fill',
+                'color' => 'success', 
+                'title' => 'Teljes konyha',
+                'desc'  => 'Edények 12 főre, kapszulás kávéfőző, kenyérpirító.'
+            ],
+            [
+                'icon'  => 'bi-snow',
+                'color' => 'info', 
+                'title' => 'Kellemes klíma',
+                'desc'  => 'Természetes hűvös nyáron + Légkondi a közös terekben.'
+            ],
+            [
+                'icon'  => 'bi-emoji-smile-fill',
+                'color' => 'danger', 
+                'title' => 'Legkisebbeknek',
+                'desc'  => 'Etetőszék, rácsos ágy és játéksarok biztosított.'
+            ],
+            [
+                'icon'  => 'bi-layers-fill',
+                'color' => 'success', 
+                'title' => 'Textíliák',
+                'desc'  => 'Friss ágyneműhuzatot és törölközőt adunk.'
+            ],
+            [
+                'icon'  => 'bi-thermometer-high',
+                'color' => 'primary', 
+                'title' => 'Fűtés',
+                'desc'  => 'Radiátorok minden fő helyiségben a téli napokra.'
+            ],
+            [
+                'icon'  => 'bi-wifi',
+                'color' => 'black', 
+                'title' => 'Kapcsolat',
+                'desc'  => 'Ingyenes, stabil Wifi a ház teljes területén.'
+            ],
+            
+        ];
+
+        return view('frontend.rooms', compact('rooms', 'roomFeatures'));
     }
 }

@@ -35,7 +35,7 @@
                     
                     <ul class="navbar-nav align-items-center gap-3 gap-lg-4 text-center pb-3 pb-lg-0">
                         <li class="nav-item">
-                            <a class="nav-link frontend-nav-ha" href="#">Szállásunk</a>
+                            <a class="nav-link frontend-nav-ha" href="{{ route('rooms') }}">Szállásunk</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link frontend-nav-ha" href="#">Szolgáltatások</a>
@@ -66,7 +66,7 @@
                 
                 <div class="position-absolute top-0 inset-s-0 w-100 h-100 d-flex justify-content-center align-items-center">
                     
-                    <div class="bg-dark bg-opacity-75 px-4 py-3 rounded text-center shadow">
+                    <div class="hero-text-bg px-4 py-3 rounded text-center shadow">
                         <h1 class="text-white fw-bold mb-0 display-3 ls-2">{{ $heroTitle }}</h1>
                     </div>
 

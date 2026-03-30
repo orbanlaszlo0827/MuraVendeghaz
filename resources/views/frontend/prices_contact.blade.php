@@ -61,7 +61,9 @@
                                 <span class="fs-4 text-muted">{{ $otherPrice->unit_first }}</span>
                             </div>
                             <div>
-                                <span class="fs-4 text-muted text-uppercase">{{ $otherPrice->unit_third ? '/' . $otherPrice->unit_second : 'per ' . $otherPrice->unit_second }}{{ $otherPrice->unit_third ? '/' . $otherPrice->unit_third : '' }}</span>
+                                <span class="fs-5 text-muted text-uppercase">
+                                    {{ $otherPrice->unit_third ? '/' . $otherPrice->unit_second : 'per ' . $otherPrice->unit_second }}{{ $otherPrice->unit_third ? '/' . $otherPrice->unit_third : '' }}
+                                </span>
                             </div>
                             @if(array_key_exists($otherPrice->title, $priceDescriptions))
                                 <div class="text-muted fw-bold mt-1">
@@ -604,4 +606,5 @@
             </div>
         </div>
     </section>
+    <x-frontend.cta />
 </x-frontend.layout>

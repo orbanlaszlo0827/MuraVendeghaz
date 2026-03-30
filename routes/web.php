@@ -30,6 +30,8 @@ Route::get('/foglalas/sikeres', function () {
 Route::get('/arak&kapcsolat', [PageController::class, 'prices_contact'])->name('prices_contact');
 Route::post('/kapcsolat', [PageController::class, 'contactSubmit'])->name('contact.submit');
 
+Route::get('/szobak', [PageController::class, 'rooms'])->name('rooms');
+
 
 Route::get('/admin', function () {
     return view('auth.login');
