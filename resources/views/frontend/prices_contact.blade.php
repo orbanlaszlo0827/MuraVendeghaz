@@ -54,7 +54,7 @@
             <div class="row d-flex justify-content-center g-4">
                 @foreach ($otherPrices as $otherPrice)
                 <div class="col-12 col-md-6 col-xl-4">
-                    <div class="card shadow-sm border-0 border-top border-4 border-{{ $otherPrice->border_color }} rounded-4 bg-white h-100">
+                    <div class="card shadow-sm border-0 border-top border-4 border-{{ $otherPrice->border_color }} rounded-4 bg-white h-100 hover-lift">
                         <div class="card-body d-flex flex-column p-4 justify-content-center text-center">
                             <div>
                                 <span class="display-3 fw-bold">{{ $otherPrice->price_value }}</span>

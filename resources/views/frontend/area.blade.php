@@ -2,7 +2,7 @@
     <x-frontend.introduction>
         <p class="lead m-0">A vendégház két összenyitható, de szeparálható lakrészből áll, összesen 3 hálószobával és 2 fürdőszobával. Ideális elosztás nagycsaládoknak vagy baráti társaságoknak, akik együtt szeretnének lenni, de igénylik a privát szférát is. Teljes kapacitás: 10 fő (fix ágyakon) + 2 fő pótágyon.</p>
     </x-frontend.introduction>
-    <section class="mt-4" id="area">
+    <section class="mt-5" id="area">
         <div class="container py-4">
             <div class="row g-2">
                 
