@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Frontend;
 
+use App\Models\GalleryImage;
 use App\Models\PriceItem;
 use App\Models\RoomContent;
 use App\Models\SiteSetting;
@@ -119,5 +120,11 @@ class PageController
         ];
 
         return view('frontend.rooms', compact('rooms', 'roomFeatures'));
+    }
+    public function gallery()
+    {
+        $galleryImages = GalleryImage::all();
+
+        return view('frontend.gallery', compact('galleryImages'));
     }
 }

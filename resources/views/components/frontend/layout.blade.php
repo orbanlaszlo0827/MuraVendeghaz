@@ -44,7 +44,7 @@
                             <a class="nav-link frontend-nav-ha {{ request()->routeIs('area') ? 'active' : '' }}" href="{{ route('area') }}">Környék</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link frontend-nav-ha" href="#">Galéria</a>
+                            <a class="nav-link frontend-nav-ha {{ request()->routeIs('gallery') ? 'active' : '' }}" href="{{ route('gallery') }}">Galéria</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link frontend-nav-ha {{ request()->routeIs('prices_contact') ? 'active' : '' }}" href="{{ route('prices_contact') }}">Árak & Kapcsolat</a>
@@ -119,7 +119,7 @@
                             <li><a class="nav-link" href="{{ route('rooms') }}">Szállásunk</a></li>
                             <li><a class="nav-link" href="#">Szolgáltatások</a></li>
                             <li><a class="nav-link" href="{{ route('area') }}">Környék</a></li>
-                            <li><a class="nav-link" href="">Galéria</a></li>
+                            <li><a class="nav-link" href="{{ route('gallery') }}">Galéria</a></li>
                             <li><a class="nav-link" href="{{ route('prices_contact') }}">Árak & Kapcsolat</a></li>
                         </ul>
                 </div>

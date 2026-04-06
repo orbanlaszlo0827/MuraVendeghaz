@@ -36,6 +36,8 @@ Route::get('/kornyek', function () {
     return view('frontend.area');
 })->name('area');
 
+Route::get('/galeria', [PageController::class, 'gallery'])->name('gallery');
+
 
 Route::get('/admin', function () {
     return view('auth.login');

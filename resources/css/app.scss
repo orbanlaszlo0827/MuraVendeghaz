@@ -311,3 +311,30 @@ $font-size-base: 1rem;
     width: 45px;
     height: 45px;
 }
+
+// gallery
+
+.filter-btn.active {
+    background-color: #212529 !important;
+    color: #fff !important;
+    border-color: #212529 !important;
+}
+
+.masonry-grid {
+    column-count: 1;
+    column-gap: 1.5rem;
+}
+
+@media (min-width: 768px) {
+    .masonry-grid { column-count: 2; }
+}
+
+@media (min-width: 992px) {
+    .masonry-grid { column-count: 3; }
+}
+
+.masonry-item {
+    break-inside: avoid;
+    margin-bottom: 1.5rem;
+    transition: opacity 0.3s ease;
+}
