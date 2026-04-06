@@ -38,7 +38,7 @@
                             <a class="nav-link frontend-nav-ha {{ request()->routeIs('rooms') ? 'active' : '' }}" href="{{ route('rooms') }}">Szállásunk</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link frontend-nav-ha" href="#">Szolgáltatások</a>
+                            <a class="nav-link frontend-nav-ha {{ request()->routeIs('services') ? 'active' : '' }}" href="{{ route('services') }}">Szolgáltatások</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link frontend-nav-ha {{ request()->routeIs('area') ? 'active' : '' }}" href="{{ route('area') }}">Környék</a>

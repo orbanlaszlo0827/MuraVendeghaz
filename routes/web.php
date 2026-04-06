@@ -38,6 +38,10 @@ Route::get('/kornyek', function () {
 
 Route::get('/galeria', [PageController::class, 'gallery'])->name('gallery');
 
+Route::get('/szolgaltatasok', function () {
+    return view('frontend.services');
+})->name('services');
+
 
 Route::get('/admin', function () {
     return view('auth.login');

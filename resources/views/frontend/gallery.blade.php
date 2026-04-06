@@ -1,4 +1,5 @@
 <x-frontend.layout heroImage="gallery/hero.jpg" heroTitle="Tekintse meg vendégházunk galériáját!">
+    @section('title', 'Galéria')
 
     <section class="py-5">
         <div class="container py-4">

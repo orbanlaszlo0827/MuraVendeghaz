@@ -338,3 +338,28 @@ $font-size-base: 1rem;
     margin-bottom: 1.5rem;
     transition: opacity 0.3s ease;
 }
+
+// services
+
+.featurePanel {
+    max-width: 900px;
+    img {
+        height: 400px;
+        object-fit: cover;
+    }
+}
+
+.serviceGridBig {
+    object-fit: cover;
+    min-height: 350px;
+}
+
+.serviceGridSmall {
+    object-fit: cover;
+    min-height: 350px;
+}
+
+.moreServiceImage {
+    height: 250px;
+    object-fit: cover;
+}
