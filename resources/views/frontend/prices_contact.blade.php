@@ -1,4 +1,4 @@
-<x-frontend.layout>
+<x-frontend.layout heroImage="prices_contact/hero.jpg" heroTitle="Minden, amit a szállásdíjakról tudni érdemes">
     @if (session('success'))
         <div class="alert alert-success alert-dismissible fade show m-3" role="alert">
         {{ session('success') }}
@@ -9,7 +9,7 @@
         <div class="container p-3 p-lg-5">
             <div class="row d-flex justify-content-center">
                 <div class="col-12 col-md-10 col-lg-8 col-xl-6">
-                    <div class="card shadow-sm border-0 border-top border-4 border-black rounded-4 bg-white mb-5">
+                    <div class="card shadow-sm border-0 border-top border-4 border-primary rounded-4 bg-white mb-5">
                         <div class="card-body p-4">
                             <h4 class="text-center fw-bold mb-4">Szállásdíjak (Felnőttek)</h4>
                             @foreach ($adultPrices as $adultPrice)
@@ -31,7 +31,7 @@
             </div>
             <div class="row d-flex justify-content-center mb-5">
                 <div class="col-12 col-md-8 col-lg-6 col-xl-5">
-                    <div class="card shadow-sm border-0 border-top border-4 border-black rounded-4 bg-white">
+                    <div class="card shadow-sm border-0 border-top border-4 border-primary rounded-4 bg-white">
                         <div class="card-body p-4">
                             <h4 class="text-center fw-bold mb-4">Fűtési felár</h4>
                             @foreach ($heatingPrices as $heatingPrice)
