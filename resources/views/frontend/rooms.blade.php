@@ -15,7 +15,7 @@
                     <div class="card border-0 shadow-lg rounded-4 overlap-card-right bg-white p-4 p-md-5">
                         <h3 class="fw-bold mb-4">{{ $rooms['living_room']?->title ?? 'Amerikai konyhás étkező és nappali' }}</h3>
                         <div class="text-muted mb-0 fs-5 ta-justify">
-                            {!! $rooms['living_room']?->description ?? 'Tágas, világos közösségi tér, ahol a család vagy a baráti társaság kényelmesen együtt lehet. A konyha teljesen felszerelt (mosogatógép, sütő, mikró, kávéfőző).' !!}
+                            {!! $rooms['living_room']?->description ?? 'Tágas, világos közösségi tér, ahol a család vagy a baráti társaság kényelmesen összegyűlhet. A modern konyha teljesen felszerelt (mosogatógép, sütő, mikrohullámú sütő, kávéfőző), így egy kiadós reggeli vagy egy ünnepi vacsora elkészítése is gyerekjáték. A kényelmes kanapékon pihenve pedig senki sem marad ki a közös beszélgetésekből.' !!}
                         </div>
                     </div>
                 </div>
@@ -23,14 +23,14 @@
 
             <div class="row align-items-center flex-lg-row-reverse mb-5 pb-lg-5">
                 <div class="col-12 col-lg-7">
-                    <img src="{{ $rooms['family_zone']?->image_path ? asset('storage/' . $rooms['family_zone']->image_path) : asset('images/rooms/nappali2.jpg') }}" alt="{{ $rooms['family_zone']?->title ?? 'Családi pihenőzóna' }}" class="img-fluid rounded-4 shadow w-100 rooms-img">
+                    <img src="{{ $rooms['family_zone']?->image_path ? asset('storage/' . $rooms['family_zone']->image_path) : asset('images/rooms/halo1.jpg') }}" alt="{{ $rooms['family_zone']?->title ?? 'Családi pihenőzóna' }}" class="img-fluid rounded-4 shadow w-100 rooms-img">
                 </div>
                 
                 <div class="col-12 col-lg-5">
                     <div class="card border-0 shadow-lg rounded-4 overlap-card-left bg-white p-4 p-md-5">
                         <h3 class="fw-bold mb-4">{{ $rooms['family_zone']?->title ?? 'Családi pihenőzóna' }} –<br>Kicsiknek és nagyoknak</h3>
-                        <div class="text-muted mb-4 fs-5">
-                            {!! $rooms['family_zone']?->description ?? 'A közösségi térből két külön hálószoba nyílik, amelyek ideális elrendezést biztosítanak egy 4-5 fős család számára.' !!}
+                        <div class="text-muted mb-4 fs-5 ta-justify">
+                            {!! $rooms['family_zone']?->description ?? 'A nappaliból nyíló két különálló hálószoba tökéletes választás szülőknek és gyerekeknek egyaránt. Az egyik szobában egy franciaágy és egy masszív emeletes ágy kapott helyet a kicsik legnagyobb örömére, míg a másik egy kuckós, csendes háló franciaággyal. Közel egymáshoz, mégis biztosítva a privát szférát a pihentető éjszakákhoz.' !!}
                         </div>
                     </div>
                 </div>
@@ -38,14 +38,14 @@
 
             <div class="row align-items-center mb-5 pb-lg-5">
                 <div class="col-12 col-lg-7">
-                    <img src="{{ $rooms['master_bedroom']?->image_path ? asset('storage/' . $rooms['master_bedroom']->image_path) : asset('images/rooms/nappali2.jpg') }}" alt="{{ $rooms['master_bedroom']?->title ?? 'A "Nagy Háló"' }}" class="img-fluid rounded-4 shadow w-100 rooms-img">
+                    <img src="{{ $rooms['master_bedroom']?->image_path ? asset('storage/' . $rooms['master_bedroom']->image_path) : asset('images/rooms/hero.jpg') }}" alt="{{ $rooms['master_bedroom']?->title ?? 'A "Nagy Háló"' }}" class="img-fluid rounded-4 shadow w-100 rooms-img">
                 </div>
                 
                 <div class="col-12 col-lg-5">
                     <div class="card border-0 shadow-lg rounded-4 overlap-card-right bg-white p-4 p-md-5">
                         <h3 class="fw-bold mb-4">{{ $rooms['master_bedroom']?->title ?? 'A "Nagy Háló"' }} – Saját birodalom fürdőszobával</h3>
                         <div class="text-muted mb-0 fs-5 ta-justify">
-                            {!! $rooms['master_bedroom']?->description ?? 'Különálló, tágas hálószoba a ház csendesebb részén, kényelmes franciaággyal és gardróbbal, a maximális kényelemért.' !!}
+                            {!! $rooms['master_bedroom']?->description ?? 'A ház külön szárnyában, a nyüzsgéstől elzárva kapott helyet a legfőbb hálószoba. Ez a tágas, elegáns tér kényelmes franciaággyal, egy masszív emeletes ággyal, gardróbbal és egy saját, közvetlen bejáratú (en-suite) fürdőszobával rendelkezik. Egy igazi kis privát birodalom azoknak, akik a legnagyobb kényelemre vágynak.' !!}
                         </div>
                     </div>
                 </div>
@@ -53,14 +53,14 @@
 
             <div class="row align-items-center flex-lg-row-reverse mb-5 pb-lg-5">
                 <div class="col-12 col-lg-7">
-                    <img src="{{ $rooms['bath']?->image_path ? asset('storage/' . $rooms['bath']->image_path) : asset('images/rooms/nappali2.jpg') }}" alt="{{ $rooms['bath']?->title ?? 'Közös használatú és privát fürdőszoba' }}" class="img-fluid rounded-4 shadow w-100 rooms-img">
+                    <img src="{{ $rooms['bath']?->image_path ? asset('storage/' . $rooms['bath']->image_path) : asset('images/rooms/furdo.png') }}" alt="{{ $rooms['bath']?->title ?? 'Közös használatú és privát fürdőszoba' }}" class="img-fluid rounded-4 shadow w-100 rooms-img">
                 </div>
                 
                 <div class="col-12 col-lg-5">
                     <div class="card border-0 shadow-lg rounded-4 overlap-card-left bg-white p-4 p-md-5">
                         <h3 class="fw-bold mb-4">{{ $rooms['bath']?->title ?? 'Közös használatú és privát fürdőszoba' }}</h3>
-                        <div class="text-muted mb-4 fs-5">
-                            {!! $rooms['bath']?->description ?? 'Modern, tiszta fürdőszoba zuhanyzóval, - a közös használatú helyiségben - mosógéppel és alapvető tisztálkodási szerekkel ellátva.' !!}
+                        <div class="text-muted mb-4 fs-5 ta-justify">
+                            {!! $rooms['bath']?->description ?? 'Vendégházunkban két igényesen kialakított, zuhanyzós fürdőszoba szolgálja a vendégek kényelmét. A tiszta, letisztult terekben friss törölközők, mosógép és alapvető tisztálkodási szerek is rendelkezésre állnak, hogy Önnek már tényleg csak a pihenésre kelljen koncentrálnia.' !!}
                         </div>
                     </div>
                 </div>
@@ -68,7 +68,7 @@
 
             <div class="row justify-content-center">
                 <div class="col-12 col-lg-8">
-                    <p class="fs-5 text-center mb-5">Még több fényképet szeretne látni? <a href="#gallery" class="link-underline">Nézze meg a galériát</a></p>
+                    <p class="fs-5 text-center mb-5">Még több fényképet szeretne látni? <a href="{{ route('gallery') }}" class="link-underline">Nézze meg a galériát</a></p>
                     <hr class="mt-5 border-2 border-black">
                 </div>
             </div>

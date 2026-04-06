@@ -1,7 +1,7 @@
 <x-frontend.layout heroImage="area/hero.jpg" heroTitle="A Mura ölelése">
     @section('title', 'Környék')
     <x-frontend.introduction>
-        <p class="lead m-0">A vendégház két összenyitható, de szeparálható lakrészből áll, összesen 3 hálószobával és 2 fürdőszobával. Ideális elosztás nagycsaládoknak vagy baráti társaságoknak, akik együtt szeretnének lenni, de igénylik a privát szférát is. Teljes kapacitás: 10 fő (fix ágyakon) + 2 fő pótágyon.</p>
+        <p class="lead m-0">Ahol a folyó lágyan kanyarog és az ártéri erdők susognak, ott kezdődik a valódi kikapcsolódás. Akár bakancsos túrára, kétkerekes kalandra a kiépített EuroVelo útvonalakon, egy csendes horgászat élményére, vagy csak a természet gyógyító közelségére vágyik, ez a vidék minden évszakban ezer arcát mutatja. Szakadjon ki a hétköznapok zajából, és merüljön el egy olyan tájban, amely pillanatok alatt rabul ejti a szívét!</p>
     </x-frontend.introduction>
     <section class="mt-5" id="area">
         <div class="container py-4">

@@ -1,4 +1,5 @@
 <x-frontend.layout heroImage="prices_contact/hero.jpg" heroTitle="Minden, amit a szállásdíjakról tudni érdemes">
+    @section('title', 'Szállásdíjak és Gyakran Ismételt Kérdések')
     @if (session('success'))
         <div class="alert alert-success alert-dismissible fade show m-3" role="alert">
         {{ session('success') }}
@@ -549,13 +550,13 @@
                     <div class="p-4 p-lg-5 bg-white shadow rounded-4 h-100 d-flex flex-column justify-content-center border-0 border-start border-4 border-dark">
                         
                         <div class="text-center text-lg-start"> 
-                            <h2 class="mb-4 fw-bold"><i class="ph ph-phone-disconnect me-2 text-primary"></i>Kérdése van a foglalás előtt?</h2>
+                            <h2 class="mb-4 fw-bold"><i class="ph ph-phone-disconnect me-2 text-dark"></i>Kérdése van a foglalás előtt?</h2>
                             
                             <p class="fs-5 mb-5 text-muted">Hívjon minket bátran, vagy írjon üzenetet az űrlapon keresztül, szívesen segítünk eligazodni!</p>
                             
                             <div class="bg-light rounded-3 p-4 mb-5 shadow-sm border">
                                 <p class="fs-3 fw-bold mb-3 d-flex align-items-center justify-content-center justify-content-lg-start">
-                                    <i class="bi bi-telephone me-3 text-primary"></i>
+                                    <i class="bi bi-telephone me-3 text-dark"></i>
                                     <a href="tel:{{ str_replace(' ', '', $settings['contact_phone']) }}" class="text-dark text-decoration-none">
                                         {{ $settings['contact_phone'] }}
                                     </a>

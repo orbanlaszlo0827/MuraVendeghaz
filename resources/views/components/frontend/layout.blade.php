@@ -35,19 +35,19 @@
                     
                     <ul class="navbar-nav align-items-center gap-3 gap-lg-4 text-center pb-3 pb-lg-0">
                         <li class="nav-item">
-                            <a class="nav-link frontend-nav-ha {{ request()->routeIs('rooms') ? 'active' : '' }}" href="{{ route('rooms') }}">Szállásunk</a>
+                            <a class="nav-link frontend-nav-ha {{ request()->routeIs('rooms') ? 'active disabled' : '' }}" href="{{ route('rooms') }}">Szállásunk</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link frontend-nav-ha {{ request()->routeIs('services') ? 'active' : '' }}" href="{{ route('services') }}">Szolgáltatások</a>
+                            <a class="nav-link frontend-nav-ha {{ request()->routeIs('services') ? 'active disabled' : '' }}" href="{{ route('services') }}">Szolgáltatások</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link frontend-nav-ha {{ request()->routeIs('area') ? 'active' : '' }}" href="{{ route('area') }}">Környék</a>
+                            <a class="nav-link frontend-nav-ha {{ request()->routeIs('area') ? 'active disabled' : '' }}" href="{{ route('area') }}">Környék</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link frontend-nav-ha {{ request()->routeIs('gallery') ? 'active' : '' }}" href="{{ route('gallery') }}">Galéria</a>
+                            <a class="nav-link frontend-nav-ha {{ request()->routeIs('gallery') ? 'active disabled' : '' }}" href="{{ route('gallery') }}">Galéria</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link frontend-nav-ha {{ request()->routeIs('prices_contact') ? 'active' : '' }}" href="{{ route('prices_contact') }}">Árak & Kapcsolat</a>
+                            <a class="nav-link frontend-nav-ha {{ request()->routeIs('prices_contact') ? 'active disabled' : '' }}" href="{{ route('prices_contact') }}">Árak & Kapcsolat</a>
                         </li>
                         
                         <li class="nav-item mt-2 mt-lg-0">
@@ -115,21 +115,21 @@
             <div class="row mx-0 bg-secondary py-3">
                 <div class="container d-flex flex-column flex-md-row justify-content-center align-items-center">                
                         <ul class="list-unstyled d-flex flex-column flex-md-row justify-content-center justify-content-md-end align-items-center gap-3 gap-md-4 mb-0">
-                            <li><a class="nav-link" href="{{ route('home') }}">Főoldal</a></li>
-                            <li><a class="nav-link" href="{{ route('rooms') }}">Szállásunk</a></li>
-                            <li><a class="nav-link" href="#">Szolgáltatások</a></li>
-                            <li><a class="nav-link" href="{{ route('area') }}">Környék</a></li>
-                            <li><a class="nav-link" href="{{ route('gallery') }}">Galéria</a></li>
-                            <li><a class="nav-link" href="{{ route('prices_contact') }}">Árak & Kapcsolat</a></li>
+                            <li><a class="nav-link frontend-nav-ha {{ request()->routeIs('home') ? 'active disabled' : '' }}" href="{{ route('home') }}">Főoldal</a></li>
+                            <li><a class="nav-link frontend-nav-ha {{ request()->routeIs('rooms') ? 'active disabled' : '' }}" href="{{ route('rooms') }}">Szállásunk</a></li>
+                            <li><a class="nav-link frontend-nav-ha {{ request()->routeIs('services') ? 'active disabled' : '' }}" href="{{ route('services') }}">Szolgáltatások</a></li>
+                            <li><a class="nav-link frontend-nav-ha {{ request()->routeIs('area') ? 'active disabled' : '' }}" href="{{ route('area') }}">Környék</a></li>
+                            <li><a class="nav-link frontend-nav-ha {{ request()->routeIs('gallery') ? 'active disabled' : '' }}" href="{{ route('gallery') }}">Galéria</a></li>
+                            <li><a class="nav-link frontend-nav-ha {{ request()->routeIs('prices_contact') ? 'active disabled' : '' }}" href="{{ route('prices_contact') }}">Árak & Kapcsolat</a></li>
                         </ul>
                 </div>
             </div>
 
             <div class="row mx-0 py-1 bg-primary d-flex align-items-center justify-content-center justify-content-md-between">
                 <div class="col-12 col-md-6 d-flex flex-column flex-md-row justify-content-center justify-content-md-end align-items-center gap-2 gap-md-4 order-1 order-md-2">
-                    <a class="link-light link-offset-2 link-underline-opacity-25 link-underline-opacity-75-hover text-center" href="#">ÁSZF</a>
+                    <!--<a class="link-light link-offset-2 link-underline-opacity-25 link-underline-opacity-75-hover text-center" href="#">ÁSZF</a>
                     <a class="link-light link-offset-2 link-underline-opacity-25 link-underline-opacity-75-hover text-center" href="#">Impresszum</a>
-                    <a class="link-light link-offset-2 link-underline-opacity-25 link-underline-opacity-75-hover text-center" href="#">Házirend</a>
+                    <a class="link-light link-offset-2 link-underline-opacity-25 link-underline-opacity-75-hover text-center" href="#">Házirend</a> -->
                     <p class="text-white text-center mb-0"><b>NTAK: </b>MA-19006725</p>
                 </div>
                 <div class="col-12 col-md-6 text-white text-center text-md-start order-2 order-md-1">
