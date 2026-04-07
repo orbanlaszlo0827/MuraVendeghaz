@@ -61,7 +61,7 @@
                         <p class=" rounded-3 py-4 px-3 mb-0 bg-light bg-opacity-50 fs-4 h-100 shadow-sm"><i class="bi bi-heart-fill me-3"></i>Kutyabarát szálláshely</p>
                     </div>
                     <div class="col-12 col-md-6 col-lg-3 text-center">
-                        <p class=" rounded-3 py-4 px-3 mb-0 bg-light bg-opacity-50 fs-4 h-100 shadow-sm"><i class="bi bi-house-door-fill me-3"></i>35 m²-es privát élettér</p>
+                        <p class=" rounded-3 py-4 px-3 mb-0 bg-light bg-opacity-50 fs-4 h-100 shadow-sm"><i class="bi bi-house-door-fill me-3"></i>200 m²-es privát élettér</p>
                     </div>
                     <div class="col-12 col-md-6 col-lg-3 text-center">
                         <p class=" rounded-3 py-4 px-3 mb-0 bg-light bg-opacity-50 fs-4 h-100 shadow-sm"><i class="bi bi-wifi me-3"></i>Klíma és Ingyenes WiFi</p>

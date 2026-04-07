@@ -39,7 +39,7 @@
         <div class="row d-flex justify-content-center">
             <div class="col-12 col-lg-4 text-center d-flex flex-column gap-3">
                 <a class="btn btn-success py-2 fs-4 text-white" href="{{ route('home') }}">Vissza a főoldalra</a>
-                <a href="#">Galéria megtekintése</a>
+                <a href="{{ route('gallery') }}">Galéria megtekintése</a>
             </div>
         </div>
     </div>

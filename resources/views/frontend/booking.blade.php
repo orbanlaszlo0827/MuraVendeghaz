@@ -92,7 +92,7 @@
                             <li><strong>Fazekas bemutató:</strong> 15.000 Ft / óra (Korongozás szakemberrel, anyaggal.)</li>
                             <li><strong>Sátrazás:</strong> 6.000 Ft / fő / éj (Az udvaron.)</li>
                         </ul>
-                        <a class="ms-4" href="#">Kattints a teljes árlistáért és az egyéb tudnivalókért!</a>
+                        <a class="ms-4" href="{{ route('prices_contact') }}">Kattints a teljes árlistáért és az egyéb tudnivalókért!</a>
                     </div>
 
                     <div class="bg-white rounded-3 border">
