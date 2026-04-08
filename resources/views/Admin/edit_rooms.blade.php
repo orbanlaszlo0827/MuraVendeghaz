@@ -12,7 +12,7 @@
                                 <input type="text" class="form-control mb-2 bg-white fw-medium"
                                     name="rooms[{{ $room->id }}][title]" 
                                     value="{{ $room->title }}">
-                                <textarea class="form-control mt-2 tinymce-editor" maxlength="150"
+                                <textarea class="form-control mt-2 tinymce-editor" maxlength="500"
                                     name="rooms[{{ $room->id }}][description]">{{ $room->description }}</textarea>
                                 <input type="file" name="rooms[{{ $room->id }}][image]" class="form-control mt-2">
                         </div>
@@ -34,7 +34,7 @@
                 language: 'hu_HU',
                 
                 setup: function (editor) {
-                    var maxCharacters = 150;
+                    var maxCharacters = 500;
 
                     editor.on('keydown', function (e) {
                         var allowedKeys = [8, 46, 37, 38, 39, 40];

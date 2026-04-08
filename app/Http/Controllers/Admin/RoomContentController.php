@@ -22,7 +22,7 @@ class RoomContentController
         $request->validate([
             'rooms' => 'required|array',
             'rooms.*.title' => 'required|string',
-            'rooms.*.description' => 'required|string',
+            'rooms.*.description' => 'required|string|max:500',
             'rooms.*.image' => 'nullable|image|mimes:jpeg,png,jpg,webp|max:4096'
         ]);
 
