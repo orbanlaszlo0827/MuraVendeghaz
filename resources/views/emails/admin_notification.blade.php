@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <body>
-    <h2 style="color: #d9534f;">Új foglalás érkezett az oldalról!</h2>
+    <h2 class="text-danger">Új foglalás érkezett az oldalról!</h2>
     <p>Egy vendég az imént sikeresen véglegesített egy foglalást.</p>
     
     <h3>Vendég adatai:</h3>
