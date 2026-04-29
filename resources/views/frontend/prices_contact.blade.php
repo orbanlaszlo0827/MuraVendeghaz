@@ -117,7 +117,7 @@
                                         <p class="mb-0">1 éjszakás foglalás esetén <strong class="text-dark">25% felárat</strong> számolunk!</p>
                                     </div>
 
-                                    <div class="py-3 px-4 border border-2 border-primary shadow rounded-3 mb-3">
+                                    <div class="py-3 px-4 border-2 border-primary shadow rounded-3 mb-3">
                                         <h5 class="text-uppercase"><i class="bi bi-fire text-primary me-2"></i><strong>Kiemelt időszakok</strong><span class="text-muted fs-6 fw-normal ms-2">(Főszezon)</span></h5>
                                         <ul>
                                             <li>06.01. - 08.31. (Nyár)</li>
@@ -147,14 +147,14 @@
                                 <div class="accordion-body">
                                     <div class="row g-lg-4">
                                         <div class="col-12 col-lg-6">
-                                            <div class="bg-success bg-opacity-25 border border-2 border-success p-3 rounded-3 mb-3">
+                                            <div class="bg-success bg-opacity-25 border-2 border-success p-3 rounded-3 mb-3">
                                                 <h6 class="fw-bold fs-5"><i class="bi bi-box-arrow-right me-2"></i>ÉRKEZÉS (Check-in)</h6>
                                                 <p><strong class="fs-4 text-success">14:00</strong> -tól</p>
                                                 <p class="m-0">(Az érkezés napján)</p>
                                             </div>
                                         </div>
                                         <div class="col-12 col-lg-6">
-                                            <div class="bg-primary bg-opacity-25 border border-2 border-primary p-3 rounded-3 mb-3">
+                                            <div class="bg-primary bg-opacity-25 border-2 border-primary p-3 rounded-3 mb-3">
                                                 <h6 class="fw-bold fs-5"><i class="bi bi-box-arrow-left me-2"></i>TÁVOZÁS (Out)</h6>
                                                 <p><strong class="fs-4 text-primary">10:00</strong> -ig</p>
                                                 <p class="m-0">(Az távozás napján)</p>
